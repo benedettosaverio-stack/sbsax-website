@@ -126,7 +126,11 @@ root.innerHTML = `
       <div class="g-item reveal"><img src="assets/mariage_small.jpg" alt="SBSAX au saxophone lors d'un mariage" loading="lazy"></div>
       <div class="g-item reveal"><img src="assets/dj_medium.jpg" alt="SBSAX aux platines en soirée" loading="lazy"></div>
       <div class="g-item reveal"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
-      <div class="g-item video-slot reveal">${placeholder('Vidéo live', ICONS.play)}</div>
+      <div class="g-item video-slot reveal">
+        <video controls preload="metadata" poster="assets/poster.jpg" playsinline>
+          <source src="assets/ambiance.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
     <p class="gallery-note">D'autres images arrivent prochainement — suivez l'actualité sur Instagram.</p>
   </div>
