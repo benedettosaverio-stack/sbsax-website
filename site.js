@@ -111,18 +111,18 @@ root.innerHTML = `
 <section class="gallery" id="galerie">
   <div class="wrap">
     <span class="section-eyebrow">En images</span>
-    <h2 class="section-title reveal">La galerie arrive en coulisses.</h2>
-    <p class="section-lede reveal">Les photos et vidéos des dernières prestations SBSAX seront bientôt ici. En attendant, suivez les coulisses sur Instagram.</p>
+    <h2 class="section-title reveal">L'énergie SBSAX, en direct des prestations.</h2>
+    <p class="section-lede reveal">Quelques moments captés sur scène, en club, en mariage et en événement pro. Suivez les coulisses au quotidien sur Instagram.</p>
     <div class="gallery-grid">
-      <div class="g-item large reveal">${placeholder('Vidéo de set', ICONS.play)}</div>
-      <div class="g-item medium reveal">${placeholder('Photo presta', ICONS.image)}</div>
-      <div class="g-item small reveal">${placeholder('Photo presta', ICONS.image)}</div>
-      <div class="g-item small reveal">${placeholder('Photo presta', ICONS.image)}</div>
-      <div class="g-item medium reveal">${placeholder('Photo presta', ICONS.image)}</div>
-      <div class="g-item small reveal">${placeholder('Photo presta', ICONS.image)}</div>
+      <div class="g-item large reveal"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div>
+      <div class="g-item medium reveal"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div>
+      <div class="g-item small reveal"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div>
+      <div class="g-item small reveal"><img src="assets/mariage_small.jpg" alt="SBSAX au saxophone lors d'un mariage" loading="lazy"></div>
+      <div class="g-item medium reveal"><img src="assets/dj_medium.jpg" alt="SBSAX aux platines en soirée" loading="lazy"></div>
+      <div class="g-item small reveal"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
       <div class="g-item small reveal">${placeholder('Vidéo live', ICONS.play)}</div>
     </div>
-    <p class="gallery-note">Galerie en cours de constitution — premières photos très prochainement.</p>
+    <p class="gallery-note">D'autres images arrivent prochainement — suivez l'actualité sur Instagram.</p>
   </div>
 </section>
 
