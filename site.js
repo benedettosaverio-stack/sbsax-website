@@ -29,6 +29,12 @@ root.innerHTML = `
 </nav>
 
 <section class="hero">
+  <div class="lyre-rig">
+    <div class="lyre lyre-1"><div class="lyre-beam"></div></div>
+    <div class="lyre lyre-2"><div class="lyre-beam"></div></div>
+    <div class="lyre lyre-3"><div class="lyre-beam"></div></div>
+    <div class="lyre lyre-4"><div class="lyre-beam"></div></div>
+  </div>
   <div class="hero-grain"></div>
   <img src="${LOGO_SYMBOL}" alt="" class="hero-bg-symbol">
   <div class="wrap">
@@ -208,6 +214,11 @@ root.innerHTML = `
     <span class="f-meta">SBSAX · Saverio Benedetto · SIRET 884661125</span>
   </div>
 </footer>
+
+<div class="lyre-rig lyre-rig-ambient">
+  <div class="lyre lyre-amb-1"><div class="lyre-beam"></div></div>
+  <div class="lyre lyre-amb-2"><div class="lyre-beam"></div></div>
+</div>
 `;
 
 function placeholder(label, icon){

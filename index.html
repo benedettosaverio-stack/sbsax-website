@@ -469,6 +469,74 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
 /* ============ SCROLL REVEAL ============ */
 .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease;}
 .reveal.in{opacity:1; transform:translateY(0);}
+
+/* ============ LYRES ROTATIVES (scénographie lumière) ============ */
+.lyre-rig{
+  position:absolute; inset:0;
+  z-index:1;
+  overflow:hidden;
+  pointer-events:none;
+  mix-blend-mode:screen;
+}
+.lyre{
+  position:absolute;
+  top:-6%;
+  width:2px; height:0;
+  transform-origin:top center;
+}
+.lyre-beam{
+  position:absolute;
+  top:0; left:50%;
+  width:900px; height:1400px;
+  transform:translateX(-50%);
+  clip-path:polygon(48% 0%, 52% 0%, 100% 100%, 0% 100%);
+  opacity:0.55;
+}
+.lyre-1{left:8%; animation:lyreSwing1 9s ease-in-out infinite;}
+.lyre-1 .lyre-beam{background:linear-gradient(180deg, rgba(255,31,122,0.55), rgba(255,31,122,0) 70%);}
+.lyre-2{left:32%; animation:lyreSwing2 11s ease-in-out infinite;}
+.lyre-2 .lyre-beam{background:linear-gradient(180deg, rgba(26,232,255,0.5), rgba(26,232,255,0) 70%);}
+.lyre-3{left:64%; animation:lyreSwing3 7.5s ease-in-out infinite;}
+.lyre-3 .lyre-beam{background:linear-gradient(180deg, rgba(255,122,26,0.5), rgba(255,122,26,0) 70%);}
+.lyre-4{left:88%; animation:lyreSwing4 13s ease-in-out infinite;}
+.lyre-4 .lyre-beam{background:linear-gradient(180deg, rgba(123,47,247,0.5), rgba(123,47,247,0) 70%);}
+
+@keyframes lyreSwing1{
+  0%,100%{transform:rotate(-35deg);}
+  50%{transform:rotate(20deg);}
+}
+@keyframes lyreSwing2{
+  0%,100%{transform:rotate(15deg);}
+  50%{transform:rotate(-40deg);}
+}
+@keyframes lyreSwing3{
+  0%,100%{transform:rotate(-20deg);}
+  50%{transform:rotate(38deg);}
+}
+@keyframes lyreSwing4{
+  0%,100%{transform:rotate(30deg);}
+  50%{transform:rotate(-25deg);}
+}
+
+/* Résidu ambiant discret sur le reste du site */
+.lyre-rig-ambient{
+  position:fixed; inset:0;
+  z-index:0;
+  opacity:0.22;
+}
+.lyre-rig-ambient .lyre-beam{width:700px; height:1100px; opacity:0.4;}
+.lyre-amb-1{left:15%; animation:lyreSwing2 16s ease-in-out infinite;}
+.lyre-amb-1 .lyre-beam{background:linear-gradient(180deg, rgba(255,31,122,0.4), rgba(255,31,122,0) 70%);}
+.lyre-amb-2{left:78%; animation:lyreSwing4 19s ease-in-out infinite;}
+.lyre-amb-2 .lyre-beam{background:linear-gradient(180deg, rgba(26,232,255,0.4), rgba(26,232,255,0) 70%);}
+
+@media (max-width:760px){
+  .lyre-beam{width:480px; height:900px;}
+  .lyre-rig-ambient{display:none;}
+}
+@media (prefers-reduced-motion: reduce){
+  .lyre{animation:none !important;}
+}
 </style>
 </head>
 <body>
