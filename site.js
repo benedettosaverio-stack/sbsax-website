@@ -42,6 +42,7 @@ root.innerHTML = `
       <div class="hero-eyebrow"><span class="dot"></span> Valenciennes &amp; Hauts-de-France</div>
       <h1>Deux instruments<br><span class="line2">un seul artiste.</span></h1>
       <p class="hero-sub">SBSAX, c'est Saverio Benedetto : DJ house &amp; tech house, et saxophoniste live. Une seule prestation pour faire vibrer un dancefloor et émouvoir un cocktail.</p>
+      <p class="hero-availability">Nombre de prestations limité chaque saison pour garantir une préparation sur-mesure à chaque client.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">Demander un devis</a>
         <a href="#univers" class="btn btn-ghost">Découvrir l'univers</a>
@@ -226,7 +227,7 @@ root.innerHTML = `
       <div class="contact-info">
         <span class="section-eyebrow">Réservation</span>
         <h2 class="section-title reveal" style="margin-bottom:24px;">Parlons de votre événement.</h2>
-        <p class="reveal">Chaque devis est personnalisé selon le lieu, la durée et la formule choisie. Décrivez votre événement, je vous réponds rapidement.</p>
+        <p class="reveal">Chaque devis est personnalisé selon le lieu, la durée et la formule choisie. Décrivez votre événement, je vous réponds en 48 à 72h.</p>
         <div class="contact-detail reveal">
           <div class="contact-detail-row">${ICONS.phone}<a href="tel:+33652282531">06 52 28 25 31</a></div>
           <div class="contact-detail-row">${ICONS.mail}<a href="mailto:benedetto.saverio@outlook.fr">benedetto.saverio@outlook.fr</a></div>

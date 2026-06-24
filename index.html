@@ -215,7 +215,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .hero-sub{
   font-size:18px; line-height:1.6; color:var(--text-dim);
-  max-width:480px; margin-bottom:38px;
+  max-width:480px; margin-bottom:28px;
+}
+.hero-availability{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'DM Mono',monospace; font-size:12.5px; letter-spacing:0.02em;
+  color:var(--text-dim);
+  background:rgba(255,122,26,0.08);
+  border:1px solid rgba(255,122,26,0.25);
+  border-radius:30px;
+  padding:9px 16px;
+  margin-bottom:32px;
+}
+.hero-availability::before{
+  content:'';
+  width:7px; height:7px; border-radius:50%;
+  background:var(--orange);
+  box-shadow:0 0 10px rgba(255,122,26,0.7);
+  flex-shrink:0;
 }
 .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
 
