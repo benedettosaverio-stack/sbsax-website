@@ -154,6 +154,24 @@ root.innerHTML = `
   </div>
 </section>
 
+<section class="reviews" id="avis">
+  <div class="wrap">
+    <span class="section-eyebrow">Ils ont vécu l'expérience SBSAX</span>
+    <h2 class="section-title reveal">Avis vérifiés par nos clients.</h2>
+    <p class="section-lede reveal">Des retours authentiques, collectés directement sur Mariages.net.</p>
+    <div class="reviews-widget-card reveal">
+      <div id="wp-widget-reviews">
+        <div id="wp-widget-preview">
+          Lire  <a href="https://www.mariages.net/musique-mariage/sbsax--e272977/avis" rel="nofollow">nos avis</a> à &nbsp;
+          <a href='https://www.mariages.net' rel="nofollow">
+            <img src="https://cdn1.mariages.net/assets/img/logos/gen_logoHeader.svg" height="20">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
