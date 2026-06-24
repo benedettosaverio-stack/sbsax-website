@@ -158,17 +158,46 @@ root.innerHTML = `
   <div class="wrap">
     <span class="section-eyebrow">Ils ont vécu l'expérience SBSAX</span>
     <h2 class="section-title reveal">Avis vérifiés par nos clients.</h2>
-    <p class="section-lede reveal">Des retours authentiques, collectés directement sur Mariages.net.</p>
-    <div class="reviews-widget-card reveal">
-      <div id="wp-widget-reviews">
-        <div id="wp-widget-preview">
-          Lire  <a href="https://www.mariages.net/musique-mariage/sbsax--e272977/avis" rel="nofollow">nos avis</a> à &nbsp;
-          <a href='https://www.mariages.net' rel="nofollow">
-            <img src="https://cdn1.mariages.net/assets/img/logos/gen_logoHeader.svg" height="20">
-          </a>
-        </div>
+    <p class="section-lede reveal">Des retours authentiques, collectés sur Mariages.net.</p>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        ${stars(5.0)}
+        <h4>SBSAX est juste parfait</h4>
+        <p>« C'est le terme exact. Sa gentillesse, son écoute, son professionnalisme et son talent de musicien vous assureront une soirée mémorable. Voir danser des invités alors qu'ils ne dansent pas habituellement, c'est pour dire comme il sait assurer l'ambiance ! »</p>
+        <span class="review-author">Guillaume — Mariage</span>
+      </div>
+      <div class="review-card reveal">
+        ${stars(5.0)}
+        <h4>Prestation en or</h4>
+        <p>« Saverio a été dès le début toujours disponible et à l'écoute, avec une gentillesse énorme. Il a su mettre l'ambiance et tous mes invités ont adoré sa présence ! Je vous le recommande les yeux fermés. »</p>
+        <span class="review-author">Sonia — Cocktail de mariage</span>
+      </div>
+      <div class="review-card reveal">
+        ${stars(5.0)}
+        <h4>Tout simplement incroyable</h4>
+        <p>« Tout était parfait, de la première prise de contact jusqu'à l'arrivée surprise pendant notre entrée au dîner. À l'écoute tout au long des préparatifs, avec une agilité remarquable pour répondre à nos demandes. »</p>
+        <span class="review-author">Marine &amp; Édouard — Mariage</span>
+      </div>
+      <div class="review-card reveal">
+        ${stars(5.0)}
+        <h4>Prestation plus que réussie</h4>
+        <p>« Sérieux, à l'écoute, rien à dire. Ambiance jazz pour le vin d'honneur, puis electro après le repas. Génial ! »</p>
+        <span class="review-author">Clément — Mariage</span>
+      </div>
+      <div class="review-card reveal">
+        ${stars(4.0)}
+        <h4>Ambiance assurée</h4>
+        <p>« Un grand merci à SBSAX pour sa prestation de saxo au vin d'honneur ainsi que pendant la soirée, c'était le feu 🔥. Super professionnelle et super sympathique ! Je recommande ++ »</p>
+        <span class="review-author">Sabrina &amp; Valentin — Mariage</span>
+      </div>
+      <div class="review-card reveal">
+        ${stars(5.0)}
+        <h4>Excellente prestation</h4>
+        <p>« Émotions à l'église et bonne ambiance lors du vin d'honneur ! Nous sommes ravis de la prestation lors de notre mariage. Je recommande ! »</p>
+        <span class="review-author">Laurène — Mariage</span>
       </div>
     </div>
+    <p class="gallery-note">Tous les avis sont vérifiés sur <a href="https://www.mariages.net/musique-mariage/sbsax--e272977/avis" target="_blank" rel="nofollow" style="color:var(--cyan);">Mariages.net</a>.</p>
   </div>
 </section>
 
@@ -241,6 +270,18 @@ root.innerHTML = `
 
 function placeholder(label, icon){
   return `<div class="g-placeholder">${icon}<span>${label}</span></div>`;
+}
+
+function stars(rating){
+  const full = Math.round(rating);
+  let out = '<div class="review-stars">';
+  for(let i=1; i<=5; i++){
+    out += i <= full
+      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6l7.1 .6l-5.4 4.7l1.6 7l-6.2 -3.7l-6.2 3.7l1.6 -7l-5.4 -4.7l7.1 -.6z"/></svg>`
+      : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.9 6.6l7.1 .6l-5.4 4.7l1.6 7l-6.2 -3.7l-6.2 3.7l1.6 -7l-5.4 -4.7l7.1 -.6z"/></svg>`;
+  }
+  out += `<span class="review-rating-num">${rating.toFixed(1)}</span></div>`;
+  return out;
 }
 
 // ============================================================
