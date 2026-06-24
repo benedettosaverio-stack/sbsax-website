@@ -121,14 +121,29 @@ root.innerHTML = `
     <p class="section-lede reveal">Quelques moments captés sur scène, en club, en mariage et en événement pro. Suivez les coulisses au quotidien sur Instagram.</p>
     <div class="gallery-grid">
       <div class="g-item reveal"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div>
+      <div class="g-item video-slot reveal">
+        <video controls preload="metadata" poster="assets/poster-ambiance.jpg" playsinline>
+          <source src="assets/video-ambiance.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="g-item reveal"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div>
       <div class="g-item reveal"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div>
+      <div class="g-item video-slot reveal">
+        <video controls preload="metadata" poster="assets/poster-etincelles.jpg" playsinline>
+          <source src="assets/video-etincelles.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="g-item reveal"><img src="assets/mariage_small.jpg" alt="SBSAX au saxophone lors d'un mariage" loading="lazy"></div>
       <div class="g-item reveal"><img src="assets/dj_medium.jpg" alt="SBSAX aux platines en soirée" loading="lazy"></div>
+      <div class="g-item video-slot reveal">
+        <video controls preload="metadata" poster="assets/poster-dancefloor.jpg" playsinline>
+          <source src="assets/video-dancefloor.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="g-item reveal"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
       <div class="g-item video-slot reveal">
-        <video controls preload="metadata" poster="assets/poster.jpg" playsinline>
-          <source src="assets/ambiance.mp4" type="video/mp4">
+        <video controls preload="metadata" poster="assets/poster-mariage.jpg" playsinline>
+          <source src="assets/video-mariage.mp4" type="video/mp4">
         </video>
       </div>
     </div>
