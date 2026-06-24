@@ -114,13 +114,13 @@ root.innerHTML = `
     <h2 class="section-title reveal">L'énergie SBSAX, en direct des prestations.</h2>
     <p class="section-lede reveal">Quelques moments captés sur scène, en club, en mariage et en événement pro. Suivez les coulisses au quotidien sur Instagram.</p>
     <div class="gallery-grid">
-      <div class="g-item large reveal"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div>
-      <div class="g-item medium reveal"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div>
-      <div class="g-item small reveal"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div>
-      <div class="g-item small reveal"><img src="assets/mariage_small.jpg" alt="SBSAX au saxophone lors d'un mariage" loading="lazy"></div>
-      <div class="g-item medium reveal"><img src="assets/dj_medium.jpg" alt="SBSAX aux platines en soirée" loading="lazy"></div>
-      <div class="g-item small reveal"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
-      <div class="g-item small reveal">${placeholder('Vidéo live', ICONS.play)}</div>
+      <div class="g-item reveal"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div>
+      <div class="g-item reveal"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div>
+      <div class="g-item reveal"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div>
+      <div class="g-item reveal"><img src="assets/mariage_small.jpg" alt="SBSAX au saxophone lors d'un mariage" loading="lazy"></div>
+      <div class="g-item reveal"><img src="assets/dj_medium.jpg" alt="SBSAX aux platines en soirée" loading="lazy"></div>
+      <div class="g-item reveal"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
+      <div class="g-item video-slot reveal">${placeholder('Vidéo live', ICONS.play)}</div>
     </div>
     <p class="gallery-note">D'autres images arrivent prochainement — suivez l'actualité sur Instagram.</p>
   </div>
