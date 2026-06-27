@@ -221,6 +221,36 @@ root.innerHTML = `
   </div>
 </section>
 
+<section class="listen" id="ecouter">
+  <div class="wrap">
+    <span class="section-eyebrow">Avant de réserver, écoutez</span>
+    <h2 class="section-title reveal">Plongez dans l'univers SBSAX.</h2>
+    <p class="section-lede reveal">La sélection musicale qui inspire mes sets, et les coulisses de chaque prestation au quotidien.</p>
+    <div class="listen-grid">
+      <div class="listen-card reveal">
+        <span class="listen-label">Playlist</span>
+        <iframe
+          style="border-radius:14px"
+          src="https://open.spotify.com/embed/playlist/6xdrOQh6NWScGU4EhCID82?utm_source=generator&theme=0"
+          width="100%" height="352" frameBorder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="listen-card listen-insta reveal">
+        <span class="listen-label">Coulisses</span>
+        <div class="insta-card-content">
+          ${ICONS.insta}
+          <h4>@sbsax__</h4>
+          <p>Sets, prestations, et l'envers du décor — au jour le jour.</p>
+          <a href="https://www.instagram.com/sbsax__/" target="_blank" rel="noopener" class="btn btn-ghost">Suivre sur Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
