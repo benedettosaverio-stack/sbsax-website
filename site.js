@@ -243,7 +243,7 @@ root.innerHTML = `
         <div class="insta-native-card">
           <div class="insta-native-header">
             <div class="insta-avatar-ring">
-              <div class="insta-avatar">${ICONS.insta}</div>
+              <div class="insta-avatar"><img src="assets/avatar-saverio.jpg" alt="Saverio Benedetto SBSAX"></div>
             </div>
             <div class="insta-native-info">
               <h4>sbsax__</h4>
