@@ -36,6 +36,34 @@ root.innerHTML = `
     <div class="lyre lyre-4"><div class="lyre-beam"></div></div>
   </div>
   <div class="hero-grain"></div>
+  <svg class="hero-bg-silhouette" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M270 90 C 280 88, 290 92, 294 102 L 300 130" stroke-width="5"/>
+      <path d="M300 130
+               C 295 180, 292 230, 296 280
+               C 300 330, 312 375, 340 410
+               C 365 440, 400 455, 430 445
+               C 455 437, 462 412, 448 392
+               C 436 376, 415 380, 408 398
+               C 403 410, 410 422, 422 424"
+            stroke-width="5.5"/>
+      <ellipse cx="442" cy="420" rx="22" ry="30" transform="rotate(35 442 420)" stroke-width="4.5"/>
+      <path d="M296 150 L 282 152" stroke-width="3"/>
+      <path d="M298 170 L 284 173" stroke-width="3"/>
+      <circle cx="293" cy="200" r="9" stroke-width="3"/>
+      <circle cx="291" cy="230" r="9" stroke-width="3"/>
+      <circle cx="293" cy="260" r="9" stroke-width="3"/>
+      <circle cx="300" cy="295" r="7" stroke-width="2.8"/>
+      <circle cx="307" cy="320" r="7" stroke-width="2.8"/>
+      <circle cx="318" cy="343" r="7" stroke-width="2.8"/>
+      <circle cx="338" cy="368" r="6" fill="currentColor" stroke="none"/>
+      <circle cx="356" cy="388" r="6" fill="currentColor" stroke="none"/>
+      <circle cx="378" cy="402" r="6" fill="currentColor" stroke="none"/>
+      <path d="M293 209 L 293 221" stroke-width="2"/>
+      <path d="M291 239 L 293 251" stroke-width="2"/>
+      <circle cx="305" cy="175" r="5" stroke-width="2.5"/>
+    </g>
+  </svg>
   <img src="${LOGO_SYMBOL}" alt="" class="hero-bg-symbol">
   <div class="wrap">
     <div class="hero-content">
