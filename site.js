@@ -234,8 +234,8 @@ root.innerHTML = `
           <div class="contact-detail-row">${ICONS.pin}<span>Valenciennes &amp; Hauts-de-France</span></div>
         </div>
         <div class="contact-socials reveal">
-          <a href="#" class="social-btn" aria-label="Instagram SBSAX">${ICONS.insta}</a>
-          <a href="#" class="social-btn" aria-label="Spotify SBSAX">${ICONS.spotify}</a>
+          <a href="https://www.instagram.com/sbsax__/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram SBSAX">${ICONS.insta}</a>
+          <a href="https://open.spotify.com/playlist/6xdrOQh6NWScGU4EhCID82" target="_blank" rel="noopener" class="social-btn" aria-label="Playlist Spotify SBSAX">${ICONS.spotify}</a>
         </div>
       </div>
       <form class="contact-form reveal" id="contact-form">
