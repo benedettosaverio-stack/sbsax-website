@@ -39,9 +39,9 @@ root.innerHTML = `
   <img src="${LOGO_SYMBOL}" alt="" class="hero-bg-symbol">
   <div class="wrap">
     <div class="hero-content">
-      <div class="hero-eyebrow"><span class="dot"></span> Valenciennes &amp; Hauts-de-France</div>
+      <div class="hero-eyebrow"><span class="dot"></span> Valenciennes, Hauts-de-France &amp; au-delà</div>
       <h1>Deux instruments<br><span class="line2">un seul artiste.</span></h1>
-      <p class="hero-sub">SBSAX, c'est Saverio Benedetto : DJ house &amp; tech house, et saxophoniste live. Une seule prestation pour faire vibrer un dancefloor et émouvoir un cocktail.</p>
+      <p class="hero-sub">SBSAX, c'est Saverio Benedetto : DJ house &amp; tech house, et saxophoniste live pour vos mariages. Une seule prestation pour faire vibrer un dancefloor et émouvoir un cocktail, dans le Nord, les Hauts-de-France, à Paris et en Belgique.</p>
       <p class="hero-availability">Nombre de prestations limité chaque saison pour garantir une préparation sur-mesure à chaque client.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">Demander un devis</a>
@@ -134,8 +134,8 @@ root.innerHTML = `
           <source src="assets/video-etincelles.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="g-item reveal"><img src="assets/mariage_small.jpg" alt="SBSAX au saxophone lors d'un mariage" loading="lazy"></div>
-      <div class="g-item reveal"><img src="assets/dj_medium.jpg" alt="SBSAX aux platines en soirée" loading="lazy"></div>
+      <div class="g-item reveal"><img src="assets/mariage_small.jpg" alt="Saxophoniste pour mariage SBSAX en prestation" loading="lazy"></div>
+      <div class="g-item reveal"><img src="assets/dj_medium.jpg" alt="DJ mariage SBSAX aux platines en soirée" loading="lazy"></div>
       <div class="g-item video-slot reveal">
         <video controls preload="metadata" poster="assets/poster-dancefloor.jpg" playsinline>
           <source src="assets/video-dancefloor.mp4" type="video/mp4">
