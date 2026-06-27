@@ -240,11 +240,20 @@ root.innerHTML = `
       </div>
       <div class="listen-card listen-insta reveal">
         <span class="listen-label">Coulisses</span>
-        <div class="insta-card-content">
-          ${ICONS.insta}
-          <h4>@sbsax__</h4>
-          <p>Sets, prestations, et l'envers du décor — au jour le jour.</p>
-          <a href="https://www.instagram.com/sbsax__/" target="_blank" rel="noopener" class="btn btn-ghost">Suivre sur Instagram</a>
+        <div class="insta-native-card">
+          <div class="insta-native-header">
+            <div class="insta-avatar-ring">
+              <div class="insta-avatar">${ICONS.insta}</div>
+            </div>
+            <div class="insta-native-info">
+              <h4>sbsax__</h4>
+              <span>Saverio Benedetto · DJ &amp; Sax</span>
+            </div>
+          </div>
+          <p class="insta-native-bio">🎷 Sax &amp; DJ — Hauts-de-France<br>Mariages · Soirées · Événements pro<br>Sets, prestations, coulisses au quotidien</p>
+          <a href="https://www.instagram.com/sbsax__/" target="_blank" rel="noopener" class="insta-follow-btn">
+            ${ICONS.insta} Suivre sur Instagram
+          </a>
         </div>
       </div>
     </div>
