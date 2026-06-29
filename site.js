@@ -115,6 +115,49 @@ root.innerHTML = `
   </div>
 </section>
 
+<section class="configurator" id="configurateur">
+  <div class="wrap">
+    <span class="section-eyebrow">Imaginez votre prestation</span>
+    <h2 class="section-title reveal">Composez votre ambiance.</h2>
+    <p class="section-lede reveal">Choisissez le moment, ajustez l'intensité — et visualisez tout de suite le résultat.</p>
+
+    <div class="config-box reveal">
+      <div class="config-step">
+        <span class="config-label">1. Le moment</span>
+        <div class="config-moments">
+          <button class="config-moment-btn active" data-moment="cocktail">Cocktail<br><span>Vin d'honneur</span></button>
+          <button class="config-moment-btn" data-moment="diner">Dîner<br><span>Ambiance table</span></button>
+          <button class="config-moment-btn" data-moment="soiree">Soirée<br><span>Dancefloor</span></button>
+        </div>
+      </div>
+
+      <div class="config-step">
+        <span class="config-label">2. L'intensité</span>
+        <div class="config-slider-wrap">
+          <input type="range" id="config-slider" min="0" max="2" step="1" value="0" class="config-slider">
+          <div class="config-slider-labels">
+            <span>Feutré</span>
+            <span>Équilibré</span>
+            <span>Dancefloor</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-result">
+        <div class="config-result-media">
+          <img id="config-result-img" src="assets/mariage_small.jpg" alt="Aperçu de l'ambiance configurée">
+        </div>
+        <div class="config-result-text">
+          <span class="config-result-tag" id="config-result-tag">Cocktail · Feutré</span>
+          <h3 id="config-result-title">Saxophone en douceur</h3>
+          <p id="config-result-desc">Des notes jazzy et chill accompagnent vos invités pendant le vin d'honneur, sans jamais couvrir les conversations.</p>
+          <a href="#contact" class="btn btn-primary" id="config-cta">Demander cette ambiance</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="gallery" id="galerie">
   <div class="wrap">
     <span class="section-eyebrow">En images</span>
@@ -344,6 +387,60 @@ function stars(rating){
 }
 
 // ============================================================
+// CONFIGURATEUR D'AMBIANCE
+// ============================================================
+const CONFIG_MATRIX = {
+  cocktail: [
+    { tag: "Cocktail · Feutré", title: "Saxophone en douceur", desc: "Des notes jazzy et chill accompagnent vos invités pendant le vin d'honneur, sans jamais couvrir les conversations.", img: "assets/mariage_small.jpg" },
+    { tag: "Cocktail · Équilibré", title: "Saxophone & ambiance lounge", desc: "Un fond musical élégant, entre live et DJ set discret, pour un cocktail vivant mais raffiné.", img: "assets/exterieur_small.jpg" },
+    { tag: "Cocktail · Intense", title: "Cocktail qui monte en énergie", desc: "Le saxophone se mêle à des sonorités house pour un vin d'honneur qui donne déjà le ton de la fête à venir.", img: "assets/bleu_small.jpg" }
+  ],
+  diner: [
+    { tag: "Dîner · Feutré", title: "Ambiance table raffinée", desc: "Saxophone discret en fond, pour sublimer les conversations sans jamais s'imposer pendant le repas.", img: "assets/foule_medium.jpg" },
+    { tag: "Dîner · Équilibré", title: "Quelques interventions live", desc: "Le saxophone intervient par moments choisis — un toast, une entrée des mariés — pour marquer les temps forts du dîner.", img: "assets/dj_medium.jpg" },
+    { tag: "Dîner · Intense", title: "Dîner qui se transforme", desc: "Le repas se termine en douceur musicale, puis enchaîne progressivement vers l'ambiance de la soirée.", img: "assets/poster-etincelles.jpg" }
+  ],
+  soiree: [
+    { tag: "Soirée · Feutré", title: "Dancefloor tout en élégance", desc: "Une ouverture de bal en douceur au saxophone, avant de laisser progressivement place à la fête.", img: "assets/hero_large.jpg" },
+    { tag: "Soirée · Équilibré", title: "DJ set & saxophone live", desc: "Le format signature SBSAX : DJ aux platines, saxophone qui s'invite sur les moments forts du dancefloor.", img: "assets/poster-dancefloor.jpg" },
+    { tag: "Soirée · Intense", title: "Dancefloor déchaîné", desc: "House et tech house portés par le saxophone live, pour une fin de soirée mémorable et électrique.", img: "assets/poster-mariage.jpg" }
+  ]
+};
+
+function initConfigurator(){
+  const root = document.getElementById('configurateur');
+  if(!root) return;
+
+  let currentMoment = 'cocktail';
+  let currentIntensity = 0;
+
+  function updateResult(){
+    const data = CONFIG_MATRIX[currentMoment][currentIntensity];
+    document.getElementById('config-result-img').src = data.img;
+    document.getElementById('config-result-tag').textContent = data.tag;
+    document.getElementById('config-result-title').textContent = data.title;
+    document.getElementById('config-result-desc').textContent = data.desc;
+  }
+
+  root.querySelectorAll('.config-moment-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      root.querySelectorAll('.config-moment-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentMoment = btn.dataset.moment;
+      updateResult();
+    });
+  });
+
+  const slider = document.getElementById('config-slider');
+  slider.addEventListener('input', ()=>{
+    currentIntensity = parseInt(slider.value, 10);
+    updateResult();
+  });
+
+  updateResult();
+}
+
+// ============================================================
 // CONTACT FORM — mailto fallback
 // ============================================================
 document.getElementById('contact-form').addEventListener('submit', function(e){
@@ -367,6 +464,11 @@ document.getElementById('contact-form').addEventListener('submit', function(e){
   const mailtoUrl = `mailto:benedetto.saverio@outlook.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoUrl;
 });
+
+// ============================================================
+// CONFIGURATEUR — initialisation
+// ============================================================
+initConfigurator();
 
 // ============================================================
 // SCROLL REVEAL
