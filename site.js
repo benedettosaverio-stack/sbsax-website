@@ -66,7 +66,7 @@ root.innerHTML = `
       <ul class="world-list">
         <li>Pioneer XDJ-XZ — matériel professionnel personnel</li>
         <li>Sets sur-mesure selon le lieu et le public</li>
-        <li>Bars, clubs, soirées privées, entreprises</li>
+        <li>Réservé aux bars, clubs et entreprises</li>
       </ul>
     </div>
     <div class="world-card sax reveal">
@@ -94,12 +94,12 @@ root.innerHTML = `
       <div class="event-card reveal">
         <span class="event-num mono">Mariages</span>
         <h4>Cocktails &amp; soirées</h4>
-        <p>Saxophone live pour le vin d'honneur, puis DJ pour faire danser jusqu'au bout de la nuit.</p>
+        <p>Saxophone live pour le vin d'honneur, le dîner et la soirée — une présence musicale du début à la fin de votre journée.</p>
       </div>
       <div class="event-card reveal">
         <span class="event-num mono">Anniversaires</span>
         <h4>Soirées privées</h4>
-        <p>DJ seul, saxophone seul, ou la formule signature DJ + Sax combinée pour une animation qui marque.</p>
+        <p>Saxophone live en solo, pour une animation qui surprend et marque vos invités à chaque moment de la soirée.</p>
       </div>
       <div class="event-card reveal">
         <span class="event-num mono">Bars &amp; clubs</span>
@@ -119,11 +119,28 @@ root.innerHTML = `
   <div class="wrap">
     <span class="section-eyebrow">Imaginez votre prestation</span>
     <h2 class="section-title reveal">Composez votre ambiance.</h2>
-    <p class="section-lede reveal">Choisissez le moment, ajustez l'intensité — et visualisez tout de suite le résultat.</p>
+    <p class="section-lede reveal">Choisissez votre profil, le moment, ajustez l'intensité — et visualisez tout de suite le résultat.</p>
 
     <div class="config-box reveal">
       <div class="config-step">
-        <span class="config-label">1. Le moment</span>
+        <span class="config-label">1. Vous êtes</span>
+        <div class="config-moments config-profile">
+          <button class="config-moment-btn active" data-profile="particulier">Particulier<br><span>Mariage, anniversaire</span></button>
+          <button class="config-moment-btn" data-profile="pro">Professionnel<br><span>Bar, club, entreprise</span></button>
+        </div>
+      </div>
+
+      <div class="config-step" id="config-format-step" style="display:none;">
+        <span class="config-label">2. Le format</span>
+        <div class="config-moments">
+          <button class="config-format-btn active" data-format="sax">Saxophone<br><span>Solo</span></button>
+          <button class="config-format-btn" data-format="dj">DJ<br><span>Solo</span></button>
+          <button class="config-format-btn" data-format="duo">DJ + Sax<br><span>Formule signature</span></button>
+        </div>
+      </div>
+
+      <div class="config-step">
+        <span class="config-label" id="config-moment-label">3. Le moment</span>
         <div class="config-moments">
           <button class="config-moment-btn active" data-moment="cocktail">Cocktail<br><span>Vin d'honneur</span></button>
           <button class="config-moment-btn" data-moment="diner">Dîner<br><span>Ambiance table</span></button>
@@ -132,7 +149,7 @@ root.innerHTML = `
       </div>
 
       <div class="config-step">
-        <span class="config-label">2. L'intensité</span>
+        <span class="config-label" id="config-intensity-label">4. L'intensité</span>
         <div class="config-slider-wrap">
           <input type="range" id="config-slider" min="0" max="2" step="1" value="0" class="config-slider">
           <div class="config-slider-labels">
@@ -390,41 +407,107 @@ function stars(rating){
 // CONFIGURATEUR D'AMBIANCE
 // ============================================================
 const CONFIG_MATRIX = {
-  cocktail: [
-    { tag: "Cocktail · Feutré", title: "Saxophone en douceur", desc: "Des notes jazzy et chill accompagnent vos invités pendant le vin d'honneur, sans jamais couvrir les conversations.", img: "assets/mariage_small.jpg" },
-    { tag: "Cocktail · Équilibré", title: "Saxophone & ambiance lounge", desc: "Un fond musical élégant, entre live et DJ set discret, pour un cocktail vivant mais raffiné.", img: "assets/exterieur_small.jpg" },
-    { tag: "Cocktail · Intense", title: "Cocktail qui monte en énergie", desc: "Le saxophone se mêle à des sonorités house pour un vin d'honneur qui donne déjà le ton de la fête à venir.", img: "assets/bleu_small.jpg" }
-  ],
-  diner: [
-    { tag: "Dîner · Feutré", title: "Ambiance table raffinée", desc: "Saxophone discret en fond, pour sublimer les conversations sans jamais s'imposer pendant le repas.", img: "assets/foule_medium.jpg" },
-    { tag: "Dîner · Équilibré", title: "Quelques interventions live", desc: "Le saxophone intervient par moments choisis — un toast, une entrée des mariés — pour marquer les temps forts du dîner.", img: "assets/dj_medium.jpg" },
-    { tag: "Dîner · Intense", title: "Dîner qui se transforme", desc: "Le repas se termine en douceur musicale, puis enchaîne progressivement vers l'ambiance de la soirée.", img: "assets/poster-etincelles.jpg" }
-  ],
-  soiree: [
-    { tag: "Soirée · Feutré", title: "Dancefloor tout en élégance", desc: "Une ouverture de bal en douceur au saxophone, avant de laisser progressivement place à la fête.", img: "assets/hero_large.jpg" },
-    { tag: "Soirée · Équilibré", title: "DJ set & saxophone live", desc: "Le format signature SBSAX : DJ aux platines, saxophone qui s'invite sur les moments forts du dancefloor.", img: "assets/poster-dancefloor.jpg" },
-    { tag: "Soirée · Intense", title: "Dancefloor déchaîné", desc: "House et tech house portés par le saxophone live, pour une fin de soirée mémorable et électrique.", img: "assets/poster-mariage.jpg" }
-  ]
+  sax: {
+    cocktail: [
+      { tag: "Saxophone · Cocktail · Feutré", title: "Saxophone en douceur", desc: "Des notes jazzy et chill accompagnent vos invités pendant le vin d'honneur, sans jamais couvrir les conversations.", img: "assets/mariage_small.jpg" },
+      { tag: "Saxophone · Cocktail · Équilibré", title: "Saxophone & ambiance lounge", desc: "Un fond musical élégant et vivant, qui anime le cocktail sans en faire trop.", img: "assets/exterieur_small.jpg" },
+      { tag: "Saxophone · Cocktail · Intense", title: "Cocktail qui monte en énergie", desc: "Des sonorités plus rythmées au saxophone pour un vin d'honneur qui donne déjà le ton de la fête à venir.", img: "assets/bleu_small.jpg" }
+    ],
+    diner: [
+      { tag: "Saxophone · Dîner · Feutré", title: "Ambiance table raffinée", desc: "Saxophone discret en fond, pour sublimer les conversations sans jamais s'imposer pendant le repas.", img: "assets/foule_medium.jpg" },
+      { tag: "Saxophone · Dîner · Équilibré", title: "Quelques interventions live", desc: "Le saxophone intervient par moments choisis — un toast, une entrée des mariés — pour marquer les temps forts du dîner.", img: "assets/dj_medium.jpg" },
+      { tag: "Saxophone · Dîner · Intense", title: "Dîner qui se transforme", desc: "Le repas se termine en douceur musicale, puis enchaîne progressivement vers l'ambiance de la soirée.", img: "assets/poster-etincelles.jpg" }
+    ],
+    soiree: [
+      { tag: "Saxophone · Soirée · Feutré", title: "Ouverture de bal en douceur", desc: "Une ouverture de bal tout en élégance au saxophone, pour démarrer la soirée avec émotion.", img: "assets/hero_large.jpg" },
+      { tag: "Saxophone · Soirée · Équilibré", title: "Saxophone live sur la soirée", desc: "Le saxophone s'invite à intervalles réguliers tout au long de la soirée pour des moments toujours marquants.", img: "assets/poster-etincelles.jpg" },
+      { tag: "Saxophone · Soirée · Intense", title: "Saxophone qui porte la fête", desc: "Un saxophone résolument festif, qui pousse la soirée et fait danser vos invités jusqu'au bout de la nuit.", img: "assets/poster-mariage.jpg" }
+    ]
+  },
+  dj: {
+    cocktail: [
+      { tag: "DJ · Cocktail · Feutré", title: "Set lounge en ouverture", desc: "Une sélection musicale discrète et chic pour accueillir vos invités en douceur.", img: "assets/exterieur_small.jpg" },
+      { tag: "DJ · Cocktail · Équilibré", title: "DJ set d'ambiance", desc: "House groovy et chaleureuse, pour un cocktail vivant qui reste élégant.", img: "assets/dj_medium.jpg" },
+      { tag: "DJ · Cocktail · Intense", title: "Cocktail qui prend de l'élan", desc: "Une sélection déjà rythmée pour un cocktail qui annonce une soirée énergique.", img: "assets/bleu_small.jpg" }
+    ],
+    diner: [
+      { tag: "DJ · Dîner · Feutré", title: "Set discret pour le dîner", desc: "Une ambiance sonore en fond, pensée pour ne jamais couvrir les échanges à table.", img: "assets/foule_medium.jpg" },
+      { tag: "DJ · Dîner · Équilibré", title: "Transition progressive", desc: "Le set évolue doucement au fil du repas pour préparer la transition vers la soirée.", img: "assets/poster-ambiance.jpg" },
+      { tag: "DJ · Dîner · Intense", title: "Dîner qui s'électrise", desc: "Une montée en intensité dès le dessert pour basculer directement vers le dancefloor.", img: "assets/poster-etincelles.jpg" }
+    ],
+    soiree: [
+      { tag: "DJ · Soirée · Feutré", title: "Dancefloor tout en élégance", desc: "Une entrée en douceur sur le dancefloor, house chaleureuse et progressive.", img: "assets/poster-dancefloor.jpg" },
+      { tag: "DJ · Soirée · Équilibré", title: "Set house & tech house", desc: "Le set signature SBSAX : house groovy en ouverture, tech house plus engagée à mesure que la soirée monte.", img: "assets/poster-mariage.jpg" },
+      { tag: "DJ · Soirée · Intense", title: "Dancefloor déchaîné", desc: "Tech house intense et sans relâche, pour une fin de soirée mémorable.", img: "assets/hero_large.jpg" }
+    ]
+  },
+  duo: {
+    cocktail: [
+      { tag: "DJ + Sax · Cocktail · Feutré", title: "Lounge & saxophone discret", desc: "Un set lounge accompagné d'interventions ponctuelles au saxophone pour un cocktail tout en finesse.", img: "assets/exterieur_small.jpg" },
+      { tag: "DJ + Sax · Cocktail · Équilibré", title: "Le format signature en douceur", desc: "DJ et saxophone dialoguent pour un cocktail vivant et raffiné à la fois.", img: "assets/bleu_small.jpg" },
+      { tag: "DJ + Sax · Cocktail · Intense", title: "Cocktail qui monte en puissance", desc: "Le duo DJ + saxophone installe déjà une vraie énergie dès le vin d'honneur.", img: "assets/poster-etincelles.jpg" }
+    ],
+    diner: [
+      { tag: "DJ + Sax · Dîner · Feutré", title: "Ambiance table sur-mesure", desc: "Un fond musical élégant, ponctué d'interventions au saxophone sur les moments clés du dîner.", img: "assets/foule_medium.jpg" },
+      { tag: "DJ + Sax · Dîner · Équilibré", title: "Dîner rythmé en douceur", desc: "DJ et saxophone alternent pour accompagner chaque temps du repas avec justesse.", img: "assets/dj_medium.jpg" },
+      { tag: "DJ + Sax · Dîner · Intense", title: "Dîner qui bascule vers la fête", desc: "Une montée en intensité conjointe pour enchaîner naturellement vers la soirée dansante.", img: "assets/poster-mariage.jpg" }
+    ],
+    soiree: [
+      { tag: "DJ + Sax · Soirée · Feutré", title: "Ouverture de bal signature", desc: "Le saxophone ouvre le bal avec émotion, avant que le DJ ne prenne progressivement le relais.", img: "assets/hero_large.jpg" },
+      { tag: "DJ + Sax · Soirée · Équilibré", title: "Le format signature SBSAX", desc: "DJ aux platines, saxophone qui s'invite sur les moments forts du dancefloor — la formule la plus demandée.", img: "assets/poster-dancefloor.jpg" },
+      { tag: "DJ + Sax · Soirée · Intense", title: "Dancefloor déchaîné en duo", desc: "House et tech house portés par le saxophone live, pour une fin de soirée mémorable et électrique.", img: "assets/poster-mariage.jpg" }
+    ]
+  }
 };
 
 function initConfigurator(){
   const root = document.getElementById('configurateur');
   if(!root) return;
 
+  let currentProfile = 'particulier';
+  let currentFormat = 'sax';
   let currentMoment = 'cocktail';
   let currentIntensity = 0;
 
+  const formatStep = document.getElementById('config-format-step');
+
   function updateResult(){
-    const data = CONFIG_MATRIX[currentMoment][currentIntensity];
+    const data = CONFIG_MATRIX[currentFormat][currentMoment][currentIntensity];
     document.getElementById('config-result-img').src = data.img;
     document.getElementById('config-result-tag').textContent = data.tag;
     document.getElementById('config-result-title').textContent = data.title;
     document.getElementById('config-result-desc').textContent = data.desc;
   }
 
-  root.querySelectorAll('.config-moment-btn').forEach(btn=>{
+  root.querySelectorAll('[data-profile]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
-      root.querySelectorAll('.config-moment-btn').forEach(b=>b.classList.remove('active'));
+      root.querySelectorAll('[data-profile]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentProfile = btn.dataset.profile;
+      if(currentProfile === 'pro'){
+        formatStep.style.display = '';
+      } else {
+        formatStep.style.display = 'none';
+        currentFormat = 'sax';
+        root.querySelectorAll('[data-format]').forEach(b=>b.classList.remove('active'));
+        root.querySelector('[data-format="sax"]').classList.add('active');
+      }
+      updateResult();
+    });
+  });
+
+  root.querySelectorAll('[data-format]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      root.querySelectorAll('[data-format]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFormat = btn.dataset.format;
+      updateResult();
+    });
+  });
+
+  root.querySelectorAll('[data-moment]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      root.querySelectorAll('[data-moment]').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       currentMoment = btn.dataset.moment;
       updateResult();
