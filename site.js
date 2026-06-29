@@ -141,9 +141,9 @@ root.innerHTML = `
 
       <div class="config-step">
         <span class="config-label" id="config-moment-label">3. Le moment</span>
-        <div class="config-moments">
-          <button class="config-moment-btn active" data-moment="cocktail">Cocktail<br><span>Vin d'honneur</span></button>
-          <button class="config-moment-btn" data-moment="diner">Dîner<br><span>Ambiance table</span></button>
+        <div class="config-moments" id="config-moments-grid">
+          <button class="config-moment-btn active" data-moment="cocktail">Cocktail<br><span id="config-cocktail-sub">Vin d'honneur</span></button>
+          <button class="config-moment-btn" data-moment="diner" id="config-diner-btn">Dîner<br><span>Ambiance table</span></button>
           <button class="config-moment-btn" data-moment="soiree">Soirée<br><span>Dancefloor</span></button>
         </div>
       </div>
@@ -479,6 +479,10 @@ function initConfigurator(){
     document.getElementById('config-result-desc').textContent = data.desc;
   }
 
+  const dinerBtn = document.getElementById('config-diner-btn');
+  const cocktailSub = document.getElementById('config-cocktail-sub');
+  const momentsGrid = document.getElementById('config-moments-grid');
+
   root.querySelectorAll('[data-profile]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       root.querySelectorAll('[data-profile]').forEach(b=>b.classList.remove('active'));
@@ -486,8 +490,19 @@ function initConfigurator(){
       currentProfile = btn.dataset.profile;
       if(currentProfile === 'pro'){
         formatStep.style.display = '';
+        dinerBtn.style.display = 'none';
+        momentsGrid.classList.add('config-profile');
+        cocktailSub.textContent = 'Networking';
+        if(currentMoment === 'diner'){
+          currentMoment = 'cocktail';
+          root.querySelectorAll('[data-moment]').forEach(b=>b.classList.remove('active'));
+          root.querySelector('[data-moment="cocktail"]').classList.add('active');
+        }
       } else {
         formatStep.style.display = 'none';
+        dinerBtn.style.display = '';
+        momentsGrid.classList.remove('config-profile');
+        cocktailSub.textContent = "Vin d'honneur";
         currentFormat = 'sax';
         root.querySelectorAll('[data-format]').forEach(b=>b.classList.remove('active'));
         root.querySelector('[data-format="sax"]').classList.add('active');
