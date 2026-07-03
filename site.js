@@ -465,7 +465,7 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
   // Curseur stylé : anneau dégradé tournant + point, avec traînée
   const ring = document.createElement('div');
   ring.className = 'cursor-ring';
-  ring.innerHTML = '<div class="cursor-ring-spin"></div>';
+  ring.innerHTML = '<div class="cursor-ring-spin"><div class="cursor-vinyl-label"></div></div>';
   const dot = document.createElement('div');
   dot.className = 'cursor-dot';
   const label = document.createElement('div');
