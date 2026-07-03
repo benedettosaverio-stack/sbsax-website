@@ -386,3 +386,107 @@ revealEls.forEach(el=>observer.observe(el));
 document.querySelectorAll('.world-card').forEach((el,i)=>{ el.style.transitionDelay = `${i*0.1}s`; });
 document.querySelectorAll('.event-card').forEach((el,i)=>{ el.style.transitionDelay = `${i*0.08}s`; });
 document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay = `${(i%4)*0.06}s`; });
+
+// ============================================================
+// WOW EFFECTS — curseur, parallax, spotlight, progression de scroll
+// ============================================================
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Barre de progression de scroll
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  document.body.appendChild(progress);
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrollTop = h.scrollTop || document.body.scrollTop;
+    const scrollHeight = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+    progress.style.width = (scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Entrée animée du hero
+  const heroContent = document.querySelector('.hero-content');
+  if(heroContent){
+    setTimeout(()=> heroContent.classList.add('hero-in'), 60);
+  }
+
+  if(reduceMotion || !fine) return;
+
+  // Curseur personnalisé
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  document.body.appendChild(glow);
+  document.body.appendChild(dot);
+  document.body.classList.add('custom-cursor-active');
+
+  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+  let glowX = mouseX, glowY = mouseY;
+
+  document.addEventListener('mousemove', (e)=>{
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
+  });
+  document.documentElement.addEventListener('mouseleave', ()=>{
+    dot.classList.add('cursor-hidden'); glow.classList.add('cursor-hidden');
+  });
+  document.documentElement.addEventListener('mouseenter', ()=>{
+    dot.classList.remove('cursor-hidden'); glow.classList.remove('cursor-hidden');
+  });
+
+  function animateGlow(){
+    glowX += (mouseX - glowX) * 0.15;
+    glowY += (mouseY - glowY) * 0.15;
+    glow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%,-50%)`;
+    requestAnimationFrame(animateGlow);
+  }
+  animateGlow();
+
+  document.addEventListener('mouseover', (e)=>{
+    if(e.target.closest('a, button, input, textarea, select, .btn')) glow.classList.add('cursor-hover');
+  });
+  document.addEventListener('mouseout', (e)=>{
+    if(e.target.closest('a, button, input, textarea, select, .btn')) glow.classList.remove('cursor-hover');
+  });
+
+  // Boutons magnétiques
+  document.querySelectorAll('.btn, .nav-cta').forEach(btn=>{
+    btn.addEventListener('mousemove', (e)=>{
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
+  });
+
+  // Halo lumineux qui suit le curseur sur les cartes vitrées
+  document.querySelectorAll('.world-card, .event-card, .g-item, .review-card, .listen-card, .equip-list').forEach(card=>{
+    card.addEventListener('mousemove', (e)=>{
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // Parallax au mouvement de la souris dans le hero
+  const lyreRig = document.querySelector('.lyre-rig');
+  const heroEl = document.querySelector('.hero');
+  if(heroEl){
+    heroEl.addEventListener('mousemove', (e)=>{
+      const r = heroEl.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      if(lyreRig) lyreRig.style.transform = `translate(${px * 30}px, ${py * 20}px)`;
+      if(heroContent) heroContent.style.transform = `translate(${px * -10}px, ${py * -6}px)`;
+    });
+    heroEl.addEventListener('mouseleave', ()=>{
+      if(lyreRig) lyreRig.style.transform = '';
+      if(heroContent) heroContent.style.transform = '';
+    });
+  }
+})();
