@@ -397,7 +397,7 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
   // Retire le rideau d'ouverture du flux une fois l'animation terminée
   const curtain = document.querySelector('.intro-curtain');
   if(curtain){
-    curtain.addEventListener('animationend', ()=> curtain.remove());
+    curtain.addEventListener('animationend', (e)=>{ if(e.target === curtain) curtain.remove(); });
     setTimeout(()=>{ if(curtain.parentNode) curtain.remove(); }, 2000);
   }
 
