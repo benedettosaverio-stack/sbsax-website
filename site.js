@@ -462,6 +462,64 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
     btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
   });
 
+  // Curseur stylé : anneau dégradé tournant + point, avec traînée
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  ring.innerHTML = '<div class="cursor-ring-spin"></div>';
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  const label = document.createElement('div');
+  label.className = 'cursor-label';
+  label.textContent = 'Voir';
+  document.body.appendChild(ring);
+  document.body.appendChild(dot);
+  document.body.appendChild(label);
+  document.body.classList.add('custom-cursor-active');
+
+  let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+  let ringX = cx, ringY = cy;
+
+  document.addEventListener('mousemove', (e)=>{
+    cx = e.clientX; cy = e.clientY;
+    dot.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`;
+    label.style.transform = `translate(${cx}px, ${cy + 26}px) translate(-50%,0)`;
+  });
+  document.documentElement.addEventListener('mouseleave', ()=>{
+    dot.classList.add('cursor-hidden'); ring.classList.add('cursor-hidden'); label.classList.remove('show');
+  });
+  document.documentElement.addEventListener('mouseenter', ()=>{
+    dot.classList.remove('cursor-hidden'); ring.classList.remove('cursor-hidden');
+  });
+
+  function animateRing(){
+    ringX += (cx - ringX) * 0.18;
+    ringY += (cy - ringY) * 0.18;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%,-50%)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.addEventListener('mouseover', (e)=>{
+    if(e.target.closest('a, button, input, textarea, select, .btn')){
+      ring.classList.add('cursor-hover');
+      dot.classList.add('cursor-hidden');
+    }
+    if(e.target.closest('.g-item')){
+      ring.classList.add('cursor-view');
+      label.classList.add('show');
+    }
+  });
+  document.addEventListener('mouseout', (e)=>{
+    if(e.target.closest('a, button, input, textarea, select, .btn')){
+      ring.classList.remove('cursor-hover');
+      dot.classList.remove('cursor-hidden');
+    }
+    if(e.target.closest('.g-item')){
+      ring.classList.remove('cursor-view');
+      label.classList.remove('show');
+    }
+  });
+
   // Halo lumineux sur les cartes photo (pas de tilt, juste le spot)
   document.querySelectorAll('.g-item').forEach(card=>{
     card.addEventListener('mousemove', (e)=>{

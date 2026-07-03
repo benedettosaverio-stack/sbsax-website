@@ -586,6 +586,59 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
   pointer-events:none;
 }
 
+/* ============ WOW: CURSEUR STYLÉ ============ */
+@media (hover:hover) and (pointer:fine){
+  body.custom-cursor-active, body.custom-cursor-active a, body.custom-cursor-active button,
+  body.custom-cursor-active input, body.custom-cursor-active textarea, body.custom-cursor-active select{
+    cursor:none;
+  }
+}
+.cursor-ring{
+  position:fixed; top:0; left:0; width:34px; height:34px;
+  pointer-events:none; z-index:9998;
+  transition:width 0.3s cubic-bezier(.16,1,.3,1), height 0.3s cubic-bezier(.16,1,.3,1), opacity 0.25s ease;
+  will-change:transform;
+}
+.cursor-ring-spin{
+  width:100%; height:100%; border-radius:50%;
+  padding:2px;
+  background:conic-gradient(from 0deg, var(--orange), var(--pink), var(--violet), var(--cyan), var(--orange));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  filter:drop-shadow(0 0 10px rgba(255,31,122,0.45));
+  animation:cursorSpin 3.2s linear infinite;
+}
+@keyframes cursorSpin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+.cursor-dot{
+  position:fixed; top:0; left:0; width:6px; height:6px; border-radius:50%;
+  background:#fff; pointer-events:none; z-index:9999;
+  transition:opacity 0.2s ease;
+  will-change:transform;
+}
+.cursor-ring.cursor-hover{ width:60px; height:60px; }
+.cursor-ring.cursor-hover .cursor-ring-spin{
+  background:conic-gradient(from 0deg, var(--cyan), var(--pink), var(--orange), var(--violet), var(--cyan));
+  animation-duration:1.6s;
+}
+.cursor-ring.cursor-view{ width:76px; height:76px; }
+.cursor-dot.cursor-hidden, .cursor-ring.cursor-hidden, .cursor-label.cursor-hidden{opacity:0;}
+.cursor-label{
+  position:fixed; top:0; left:0; z-index:9999;
+  pointer-events:none;
+  font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;
+  color:#fff;
+  opacity:0;
+  transition:opacity 0.25s ease;
+  white-space:nowrap;
+}
+.cursor-label.show{opacity:1;}
+@media (prefers-reduced-motion: reduce){
+  .cursor-ring{display:none;}
+  .cursor-dot, .cursor-label{display:none;}
+}
+
 /* ============ WOW: TILT 3D + SPOTLIGHT + REFLET SUR LES CARTES ============ */
 .world-card, .event-card, .g-item, .review-card, .listen-card, .equip-list{
   position:relative;
