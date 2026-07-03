@@ -388,11 +388,18 @@ document.querySelectorAll('.event-card').forEach((el,i)=>{ el.style.transitionDe
 document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay = `${(i%4)*0.06}s`; });
 
 // ============================================================
-// WOW EFFECTS — curseur, parallax, spotlight, progression de scroll
+// WOW EFFECTS — rideau d'ouverture, scroll cinématique, tilt 3D
 // ============================================================
 (function(){
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Retire le rideau d'ouverture du flux une fois l'animation terminée
+  const curtain = document.querySelector('.intro-curtain');
+  if(curtain){
+    curtain.addEventListener('animationend', ()=> curtain.remove());
+    setTimeout(()=>{ if(curtain.parentNode) curtain.remove(); }, 2000);
+  }
 
   // Barre de progression de scroll
   const progress = document.createElement('div');
@@ -413,45 +420,36 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
     setTimeout(()=> heroContent.classList.add('hero-in'), 60);
   }
 
-  if(reduceMotion || !fine) return;
+  // Disparition cinématique du hero au scroll (fondu + zoom + repli)
+  const heroEl = document.querySelector('.hero');
+  const lyreRig = document.querySelector('.lyre-rig');
+  let mouseParX = 0, mouseParY = 0, scrollProgress = 0, scrollTicking = false;
 
-  // Curseur personnalisé
-  const glow = document.createElement('div');
-  glow.className = 'cursor-glow';
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  document.body.appendChild(glow);
-  document.body.appendChild(dot);
-  document.body.classList.add('custom-cursor-active');
-
-  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-  let glowX = mouseX, glowY = mouseY;
-
-  document.addEventListener('mousemove', (e)=>{
-    mouseX = e.clientX; mouseY = e.clientY;
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
-  });
-  document.documentElement.addEventListener('mouseleave', ()=>{
-    dot.classList.add('cursor-hidden'); glow.classList.add('cursor-hidden');
-  });
-  document.documentElement.addEventListener('mouseenter', ()=>{
-    dot.classList.remove('cursor-hidden'); glow.classList.remove('cursor-hidden');
-  });
-
-  function animateGlow(){
-    glowX += (mouseX - glowX) * 0.15;
-    glowY += (mouseY - glowY) * 0.15;
-    glow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%,-50%)`;
-    requestAnimationFrame(animateGlow);
+  function applyHeroTransform(){
+    if(!heroContent) return;
+    const fadeY = scrollProgress * 70;
+    const fadeScale = 1 - scrollProgress * 0.08;
+    heroContent.style.transform = `translate(${mouseParX}px, ${mouseParY + fadeY}px) scale(${fadeScale})`;
+    heroContent.style.opacity = String(Math.max(0, 1 - scrollProgress * 1.3));
+    if(lyreRig) lyreRig.style.opacity = String(Math.max(0, 1 - scrollProgress * 1.6));
   }
-  animateGlow();
 
-  document.addEventListener('mouseover', (e)=>{
-    if(e.target.closest('a, button, input, textarea, select, .btn')) glow.classList.add('cursor-hover');
-  });
-  document.addEventListener('mouseout', (e)=>{
-    if(e.target.closest('a, button, input, textarea, select, .btn')) glow.classList.remove('cursor-hover');
-  });
+  if(heroEl && !reduceMotion){
+    function onScroll(){
+      if(scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(()=>{
+        const h = heroEl.offsetHeight || window.innerHeight;
+        scrollProgress = Math.min(1, Math.max(0, window.scrollY / (h * 0.85)));
+        applyHeroTransform();
+        scrollTicking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  if(reduceMotion || !fine) return;
 
   // Boutons magnétiques
   document.querySelectorAll('.btn, .nav-cta').forEach(btn=>{
@@ -464,8 +462,8 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
     btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
   });
 
-  // Halo lumineux qui suit le curseur sur les cartes vitrées
-  document.querySelectorAll('.world-card, .event-card, .g-item, .review-card, .listen-card, .equip-list').forEach(card=>{
+  // Halo lumineux sur les cartes photo (pas de tilt, juste le spot)
+  document.querySelectorAll('.g-item').forEach(card=>{
     card.addEventListener('mousemove', (e)=>{
       const r = card.getBoundingClientRect();
       card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -473,20 +471,34 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
     });
   });
 
-  // Parallax au mouvement de la souris dans le hero
-  const lyreRig = document.querySelector('.lyre-rig');
-  const heroEl = document.querySelector('.hero');
+  // Tilt 3D + halo lumineux sur les cartes vitrées
+  document.querySelectorAll('.world-card, .event-card, .review-card, .listen-card, .equip-list').forEach(card=>{
+    card.addEventListener('mousemove', (e)=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(900px) rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 7).toFixed(2)}deg) translateY(-4px) scale(1.015)`;
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform = ''; });
+  });
+
+  // Parallax au mouvement de la souris dans le hero (composé avec le fondu au scroll)
   if(heroEl){
     heroEl.addEventListener('mousemove', (e)=>{
       const r = heroEl.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;
       const py = (e.clientY - r.top) / r.height - 0.5;
       if(lyreRig) lyreRig.style.transform = `translate(${px * 30}px, ${py * 20}px)`;
-      if(heroContent) heroContent.style.transform = `translate(${px * -10}px, ${py * -6}px)`;
+      mouseParX = px * -10;
+      mouseParY = py * -6;
+      applyHeroTransform();
     });
     heroEl.addEventListener('mouseleave', ()=>{
+      mouseParX = 0; mouseParY = 0;
       if(lyreRig) lyreRig.style.transform = '';
-      if(heroContent) heroContent.style.transform = '';
+      applyHeroTransform();
     });
   }
 })();

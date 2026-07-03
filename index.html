@@ -545,33 +545,37 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
   .reveal{filter:none;}
 }
 
-/* ============ WOW: CUSTOM CURSOR ============ */
-@media (hover:hover) and (pointer:fine){
-  body.custom-cursor-active, body.custom-cursor-active a, body.custom-cursor-active button,
-  body.custom-cursor-active input, body.custom-cursor-active textarea, body.custom-cursor-active select{
-    cursor:none;
-  }
+/* ============ WOW: RIDEAU D'OUVERTURE ============ */
+.intro-curtain{
+  position:fixed; inset:0; z-index:10000;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,31,122,0.12), transparent 55%),
+    var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  animation:curtainOut 0.55s cubic-bezier(.76,0,.24,1) 0.85s forwards;
 }
-.cursor-dot{
-  position:fixed; top:0; left:0; width:8px; height:8px; border-radius:50%;
-  background:#fff; pointer-events:none; z-index:9999;
-  mix-blend-mode:difference;
-  transition:opacity 0.2s ease;
-  will-change:transform;
+.intro-mark{
+  width:56px; height:56px;
+  border-radius:16px;
+  background:var(--gradient);
+  box-shadow:0 0 60px rgba(255,31,122,0.5);
+  animation:introMarkPulse 0.85s cubic-bezier(.65,0,.35,1) forwards;
 }
-.cursor-glow{
-  position:fixed; top:0; left:0; width:40px; height:40px; border-radius:50%;
-  border:1.5px solid rgba(255,255,255,0.45);
-  pointer-events:none; z-index:9998;
-  transition:width 0.25s ease, height 0.25s ease, opacity 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-  will-change:transform;
+@keyframes introMarkPulse{
+  0%{ transform:scale(0.3) rotate(-16deg); opacity:0; }
+  45%{ transform:scale(1.08) rotate(0deg); opacity:1; }
+  75%{ transform:scale(1) rotate(0deg); opacity:1; }
+  100%{ transform:scale(0.82) rotate(0deg); opacity:0; }
 }
-.cursor-glow.cursor-hover{
-  width:64px; height:64px;
-  background:rgba(255,31,122,0.1);
-  border-color:rgba(255,31,122,0.5);
+@keyframes curtainOut{
+  0%{ transform:translateY(0); }
+  100%{ transform:translateY(-100%); }
 }
-.cursor-dot.cursor-hidden, .cursor-glow.cursor-hidden{opacity:0;}
+@media (prefers-reduced-motion: reduce){
+  .intro-curtain{ animation:curtainOutReduced 0.01s linear 0.01s forwards; }
+  .intro-mark{ display:none; }
+}
+@keyframes curtainOutReduced{ to{ transform:translateY(-100%); } }
 
 /* ============ WOW: SCROLL PROGRESS ============ */
 .scroll-progress{
@@ -582,24 +586,48 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
   pointer-events:none;
 }
 
-/* ============ WOW: SPOTLIGHT GLOW ON CARDS ============ */
+/* ============ WOW: TILT 3D + SPOTLIGHT + REFLET SUR LES CARTES ============ */
 .world-card, .event-card, .g-item, .review-card, .listen-card, .equip-list{
   position:relative;
   isolation:isolate;
+}
+.world-card, .event-card, .review-card, .listen-card, .equip-list{
+  transform-style:preserve-3d;
+  transition:transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 .world-card::after, .event-card::after, .g-item::after, .review-card::after, .listen-card::after, .equip-list::after{
   content:'';
   position:absolute; inset:0;
   border-radius:inherit;
-  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.08), transparent 60%);
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.09), transparent 60%);
   opacity:0;
   transition:opacity 0.4s ease;
   pointer-events:none;
   z-index:1;
+  mix-blend-mode:overlay;
+}
+.world-card::before, .event-card::before, .review-card::before, .listen-card::before, .equip-list::before{
+  content:'';
+  position:absolute; inset:0;
+  border-radius:inherit;
+  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.16) 48%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.16) 52%, transparent 70%);
+  background-size:250% 250%;
+  background-position:140% 140%;
+  transition:background-position 0.8s ease;
+  pointer-events:none;
+  z-index:1;
+  mix-blend-mode:overlay;
 }
 .world-card:hover::after, .event-card:hover::after, .g-item:hover::after,
 .review-card:hover::after, .listen-card:hover::after, .equip-list:hover::after{
   opacity:1;
+}
+.world-card:hover::before, .event-card:hover::before,
+.review-card:hover::before, .listen-card:hover::before, .equip-list:hover::before{
+  background-position:-40% -40%;
+}
+@media (prefers-reduced-motion: reduce){
+  .world-card, .event-card, .review-card, .listen-card, .equip-list{ transition:border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
 }
 
 /* ============ WOW: HERO ENTRANCE ============ */
@@ -616,7 +644,6 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
 .hero-content.hero-in > *{opacity:1; transform:translateY(0);}
 
 @media (prefers-reduced-motion: reduce){
-  .cursor-dot, .cursor-glow{display:none !important;}
   .hero-content > *{opacity:1; transform:none; transition:none;}
 }
 
@@ -911,6 +938,8 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
 
 </head>
 <body>
+
+<div class="intro-curtain" aria-hidden="true"><div class="intro-mark"></div></div>
 
 <!-- placeholder for content, injected via script below for maintainability -->
 <div id="root"></div>
