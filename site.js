@@ -218,6 +218,10 @@ root.innerHTML = `
       </div>
     </div>
     <p class="gallery-note">Tous les avis sont vérifiés sur <a href="https://www.mariages.net/musique-mariage/sbsax--e272977/avis" target="_blank" rel="nofollow" style="color:var(--cyan);">Mariages.net</a>.</p>
+    <div class="reveal" style="text-align:center; margin-top:46px;">
+      <p style="font-size:16px; line-height:1.6; color:var(--text-dim); max-width:460px; margin:0 auto 22px;">Vous avez fait appel à SBSAX&nbsp;? Votre avis compte énormément et aide d'autres à me faire confiance.</p>
+      <a class="btn btn-primary" href="https://g.page/r/CSGxoA9S36oGEBM/review" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01L12 2z"/></svg>Laisser un avis sur Google</a>
+    </div>
   </div>
 </section>
 
