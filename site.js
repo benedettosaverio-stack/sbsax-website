@@ -45,7 +45,7 @@ root.innerHTML = `
       <div class="hero-content">
         <div class="hero-eyebrow"><span class="dot"></span> Valenciennes, Hauts-de-France &amp; au-delà</div>
         <h1 class="hero-wordmark">SBSAX</h1>
-        <p class="hero-tagline">DJ house &amp; tech house. Saxophone live. Un seul artiste, toute la soirée.</p>
+        <p class="hero-tagline">DJ house &amp; tech house. Saxophone live.</p>
         <p class="hero-availability">Nombre de prestations limité chaque saison pour garantir une préparation sur-mesure à chaque client.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Demander un devis</a>
