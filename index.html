@@ -40,7 +40,7 @@
 <style>
 :root{
   --bg:#070308;
-  --bg-raised:#0f0712;
+  --bg-raised:#130b1a;
   --surface:#130a18;
   --surface-border:rgba(255,255,255,0.09);
   --text:#f5f0eb;
@@ -318,6 +318,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ============ SECTION SHARED ============ */
 section{padding:120px 0; position:relative; z-index:1;}
+section:not(.hero)::before{
+  content:'';
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:min(220px, 60%); height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.14) 50%, transparent 100%);
+}
 .section-eyebrow{
   font-family:'DM Mono',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase;
   color:var(--pink); margin-bottom:16px; display:block;
@@ -495,7 +501,17 @@ section{padding:120px 0; position:relative; z-index:1;}
 }
 
 /* ============ ABOUT / EQUIPMENT ============ */
-.about{padding:120px 0;}
+.about{padding:120px 0; position:relative; overflow:hidden;}
+.about::after{
+  content:'';
+  position:absolute; top:-10%; right:-12%;
+  width:480px; height:480px;
+  background:var(--gradient-soft);
+  filter:blur(90px);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+}
 .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; align-items:start; margin-top:56px;}
 .about-text p{font-size:16px; line-height:1.75; color:var(--text-dim); margin-bottom:18px;}
 .about-text strong{color:var(--text); font-weight:600;}
@@ -872,7 +888,17 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
 }
 
 /* ============ LISTEN (Spotify + Instagram) ============ */
-.listen{background:var(--bg);}
+.listen{background:var(--bg); position:relative; overflow:hidden;}
+.listen::after{
+  content:'';
+  position:absolute; bottom:-15%; left:-10%;
+  width:420px; height:420px;
+  background:var(--gradient-soft);
+  filter:blur(90px);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+}
 .listen-grid{
   display:grid;
   grid-template-columns:1.3fr 1fr;
