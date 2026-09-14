@@ -171,22 +171,11 @@ root.innerHTML = `
 
 <section class="about" id="equipement">
   <div class="wrap">
-    <div class="about-grid">
-      <div class="about-text">
-        <span class="section-eyebrow">L'artiste</span>
-        <h2 class="section-title reveal" style="margin-bottom:28px;">Saverio Benedetto</h2>
-        <p class="reveal"><strong>Semi-professionnel basé dans les Hauts-de-France</strong>, Saverio pratique le saxophone depuis le plus jeune âge avant de se former au DJing house et tech house. SBSAX est née de cette double pratique : un artiste qui ne choisit pas entre l'instrument et la platine, mais qui les fait dialoguer.</p>
-        <p class="reveal">Chaque prestation est pensée sur-mesure selon le lieu, le moment de la soirée et l'ambiance recherchée — qu'il s'agisse d'un featuring de quelques minutes sur un DJ déjà présent, ou d'une soirée complète en formule combinée.</p>
-      </div>
-      <div class="equip-list reveal">
-        <h4>Matériel professionnel</h4>
-        <div class="equip-row"><span class="k">Contrôleur DJ</span><span class="v">Pioneer XDJ-XZ</span></div>
-        <div class="equip-row"><span class="k">Backup / double DJ</span><span class="v">Pioneer DDJ-400</span></div>
-        <div class="equip-row"><span class="k">Saxophone alto</span><span class="v">Selmer Référence 54</span></div>
-        <div class="equip-row"><span class="k">Saxophone ténor</span><span class="v">Selmer Super Action 80 Série II</span></div>
-        <div class="equip-row"><span class="k">Micro instrument</span><span class="v">AKG C519 ML sans fil</span></div>
-        <div class="equip-row"><span class="k">Éclairage</span><span class="v">Jeux de lumière LED</span></div>
-      </div>
+    <div class="about-text about-text-single">
+      <span class="section-eyebrow">L'artiste</span>
+      <h2 class="section-title reveal" style="margin-bottom:28px;">Saverio Benedetto</h2>
+      <p class="reveal"><strong>Semi-professionnel basé dans les Hauts-de-France</strong>, Saverio pratique le saxophone depuis le plus jeune âge avant de se former au DJing house et tech house. SBSAX est née de cette double pratique : un artiste qui ne choisit pas entre l'instrument et la platine, mais qui les fait dialoguer.</p>
+      <p class="reveal">Chaque prestation est pensée sur-mesure selon le lieu, le moment de la soirée et l'ambiance recherchée — qu'il s'agisse d'un featuring de quelques minutes sur un DJ déjà présent, ou d'une soirée complète en formule combinée. Le tout avec du matériel professionnel (saxophones Selmer, contrôleur Pioneer avec solution de secours intégrée) pour une prestation sans risque technique.</p>
     </div>
   </div>
 </section>
@@ -591,7 +580,7 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
   });
 
   // Tilt 3D + halo lumineux sur les cartes vitrées
-  document.querySelectorAll('.world-card, .event-card, .review-card, .listen-card, .equip-list').forEach(card=>{
+  document.querySelectorAll('.world-card, .event-card, .review-card, .listen-card').forEach(card=>{
     card.addEventListener('mousemove', (e)=>{
       const r = card.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;

@@ -524,31 +524,9 @@ section:not(.hero)::before{
   pointer-events:none;
   z-index:-1;
 }
-.about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; align-items:start; margin-top:56px;}
+.about-text-single{max-width:640px; margin:56px auto 0;}
 .about-text p{font-size:16px; line-height:1.75; color:var(--text-dim); margin-bottom:18px;}
 .about-text strong{color:var(--text); font-weight:600;}
-.equip-list{
-  background:rgba(19,10,24,0.6); border:1px solid var(--surface-border); border-radius:18px;
-  padding:34px;
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 40px rgba(123,47,247,0.08);
-}
-.equip-list h4{
-  font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
-  color:var(--text-faint); margin-bottom:22px;
-}
-.equip-row{
-  display:flex; justify-content:space-between; gap:16px;
-  padding:13px 0; border-bottom:1px solid var(--surface-border);
-  font-size:14.5px;
-}
-.equip-row:last-child{border-bottom:none;}
-.equip-row .k{color:var(--text);}
-.equip-row .v{color:var(--text-faint); font-family:'DM Mono',monospace; font-size:13px; text-align:right;}
-
-@media (max-width:860px){
-  .about-grid{grid-template-columns:1fr; gap:40px;}
-}
 
 /* ============ CONTACT ============ */
 /* ============ FAQ ============ */
@@ -760,15 +738,15 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
 }
 
 /* ============ WOW: TILT 3D + SPOTLIGHT SUR LES CARTES ============ */
-.world-card, .event-card, .g-item, .review-card, .listen-card, .equip-list{
+.world-card, .event-card, .g-item, .review-card, .listen-card{
   position:relative;
   isolation:isolate;
 }
-.world-card, .event-card, .review-card, .listen-card, .equip-list{
+.world-card, .event-card, .review-card, .listen-card{
   transform-style:preserve-3d;
   transition:transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
-.world-card::after, .event-card::after, .g-item::after, .review-card::after, .listen-card::after, .equip-list::after{
+.world-card::after, .event-card::after, .g-item::after, .review-card::after, .listen-card::after::after{
   content:'';
   position:absolute; inset:0;
   border-radius:inherit;
@@ -780,11 +758,11 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
   mix-blend-mode:overlay;
 }
 .world-card:hover::after, .event-card:hover::after, .g-item:hover::after,
-.review-card:hover::after, .listen-card:hover::after, .equip-list:hover::after{
+.review-card:hover::after, .listen-card:hover::after:hover::after{
   opacity:1;
 }
 @media (prefers-reduced-motion: reduce){
-  .world-card, .event-card, .review-card, .listen-card, .equip-list{ transition:border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
+  .world-card, .event-card, .review-card, .listen-card{ transition:border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
 }
 
 /* ============ WOW: HERO ENTRANCE ============ */
