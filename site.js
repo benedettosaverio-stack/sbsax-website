@@ -278,6 +278,43 @@ root.innerHTML = `
   </div>
 </section>
 
+<section class="faq" id="faq">
+  <div class="wrap">
+    <span class="section-eyebrow">Questions fréquentes</span>
+    <h2 class="section-title reveal">Avant de réserver.</h2>
+    <p class="section-lede reveal">Les réponses aux questions les plus posées sur les prestations SBSAX.</p>
+    <div class="faq-list reveal">
+      <details class="faq-item" open>
+        <summary>Combien coûte un saxophoniste pour un mariage dans le Nord ?</summary>
+        <div class="faq-answer">
+          <p>Le tarif dépend surtout de trois choses : la durée de la prestation, la distance de déplacement, et si l'intervention couvre uniquement le vin d'honneur ou toute la soirée.</p>
+          <p>La formule Vin d'Honneur est à <strong>599€ pour 2h (hors déplacement)</strong>, avec trois sets progressifs et des transitions assurées entre chaque set. Pour une prestation sax + DJ sur toute la soirée, un devis sur-mesure est établi selon la durée et le lieu.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Pourquoi choisir un artiste qui fait à la fois saxophone et DJ ?</summary>
+        <div class="faq-answer">
+          <p>Plutôt que deux prestataires séparés (DJ + musicien), un seul artiste assure les deux avec une cohérence de style du début à la fin — du vin d'honneur au sax jusqu'au set DJ de la soirée, sans rupture ni changement de prestataire.</p>
+          <p>Ça simplifie aussi l'organisation du jour J : un seul point de contact, un seul emplacement technique, une seule personne qui connaît tout le déroulé.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Comment se déroule une prestation pendant le vin d'honneur ?</summary>
+        <div class="faq-answer">
+          <p>La formule Vin d'Honneur suit trois temps : un accueil énergique dès l'arrivée des invités, un cœur de cocktail avec des classiques fédérateurs (funk/disco plutôt que les tubes eurodance des années 90), puis une montée en énergie électro pour clôturer avant le passage à table.</p>
+          <p>Les transitions entre les sets sont assurées en continu, sans coupure, et le répertoire peut être ajusté en amont selon les goûts des mariés.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Dans quelles villes intervenez-vous ?</summary>
+        <div class="faq-answer">
+          <p>SBSAX intervient dans tout le Nord et les Hauts-de-France (Valenciennes, Lille, Douai, Cambrai...), ainsi qu'à Paris et en Belgique. Le déplacement est à discuter selon la localisation exacte de l'événement.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
