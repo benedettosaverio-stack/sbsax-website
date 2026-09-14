@@ -188,6 +188,11 @@ root.innerHTML = `
     <span class="section-eyebrow">Ils ont vécu l'expérience SBSAX</span>
     <h2 class="section-title reveal">Avis vérifiés par nos clients.</h2>
     <p class="section-lede reveal">Des retours authentiques, collectés sur Mariages.net.</p>
+    <div class="rating-badge reveal">
+      <span class="rating-badge-stars">${stars(4.9)}</span>
+      <span class="rating-badge-sep">·</span>
+      <span class="rating-badge-count">6 avis vérifiés sur Mariages.net</span>
+    </div>
     <div class="reviews-grid">
       <div class="review-card reveal">
         ${stars(5.0)}
