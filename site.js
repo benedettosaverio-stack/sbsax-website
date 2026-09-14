@@ -60,6 +60,25 @@ root.innerHTML = `
   <div class="scroll-cue"><span class="line"></span> Scroll</div>
 </section>
 
+<section class="stats" id="chiffres">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-number" data-target="22" data-suffix=" ans">0 ans</span>
+        <span class="stat-label">De pratique musicale — musicien depuis l'âge de 2 ans</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number" data-target="200" data-suffix="+">0+</span>
+        <span class="stat-label">Prestations réalisées</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number" data-target="4.9" data-decimals="1" data-suffix="/5">0.0/5</span>
+        <span class="stat-label">Note moyenne clients (6 avis vérifiés)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="worlds" id="univers">
   <div class="wrap">
     <span class="section-eyebrow">L'univers SBSAX</span>
@@ -138,32 +157,32 @@ root.innerHTML = `
       <button class="g-filter" data-filter="club">Club &amp; soirée</button>
     </div>
     <div class="gallery-grid">
-      <div class="g-item reveal" data-cat="club"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div>
-      <div class="g-item video-slot reveal" data-cat="mariage">
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div></div>
+      <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-ambiance.jpg" playsinline>
           <source src="assets/video-ambiance.mp4" type="video/mp4">
         </video>
-      </div>
-      <div class="g-item reveal" data-cat="club"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div>
-      <div class="g-item reveal" data-cat="club"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div>
-      <div class="g-item video-slot reveal" data-cat="mariage">
+      </div></div>
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div></div>
+      <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-etincelles.jpg" playsinline>
           <source src="assets/video-etincelles.mp4" type="video/mp4">
         </video>
-      </div>
-      <div class="g-item reveal" data-cat="mariage"><img src="assets/mariage_small.jpg" alt="Saxophoniste pour mariage SBSAX en prestation" loading="lazy"></div>
-      <div class="g-item reveal" data-cat="club"><img src="assets/dj_medium.jpg" alt="DJ mariage SBSAX aux platines en soirée" loading="lazy"></div>
-      <div class="g-item video-slot reveal" data-cat="mariage">
+      </div></div>
+      <div class="g-item reveal" data-cat="mariage"><div class="g-item-inner"><img src="assets/mariage_small.jpg" alt="Saxophoniste pour mariage SBSAX en prestation" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/dj_medium.jpg" alt="DJ mariage SBSAX aux platines en soirée" loading="lazy"></div></div>
+      <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-dancefloor.jpg" playsinline>
           <source src="assets/video-dancefloor.mp4" type="video/mp4">
         </video>
-      </div>
-      <div class="g-item reveal" data-cat="mariage"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
-      <div class="g-item video-slot reveal" data-cat="mariage">
+      </div></div>
+      <div class="g-item reveal" data-cat="mariage"><div class="g-item-inner"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div></div>
+      <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-mariage.jpg" playsinline>
           <source src="assets/video-mariage.mp4" type="video/mp4">
         </video>
-      </div>
+      </div></div>
     </div>
     <p class="gallery-note">D'autres images arrivent prochainement — suivez l'actualité sur Instagram.</p>
   </div>
@@ -421,6 +440,14 @@ document.getElementById('contact-form').addEventListener('submit', function(e){
 // ============================================================
 // SCROLL REVEAL
 // ============================================================
+
+// Découpe les titres de section en mots pour une révélation progressive
+document.querySelectorAll('h2.section-title.reveal').forEach(title=>{
+  const words = title.textContent.trim().split(/\s+/);
+  title.innerHTML = words.map((w,i)=>`<span class="word" style="transition-delay:${i*0.045}s">${w}</span>`).join(' ');
+  title.classList.add('word-reveal');
+});
+
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
@@ -436,6 +463,7 @@ revealEls.forEach(el=>observer.observe(el));
 document.querySelectorAll('.world-card').forEach((el,i)=>{ el.style.transitionDelay = `${i*0.1}s`; });
 document.querySelectorAll('.event-card').forEach((el,i)=>{ el.style.transitionDelay = `${i*0.08}s`; });
 document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay = `${(i%4)*0.06}s`; });
+document.querySelectorAll('.stat-item').forEach((el,i)=>{ el.style.transitionDelay = `${i*0.12}s`; });
 
 // ============================================================
 // WOW EFFECTS — rideau d'ouverture, scroll cinématique, tilt 3D
@@ -473,6 +501,7 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
   // Disparition cinématique du hero au scroll (fondu + zoom + repli)
   const heroEl = document.querySelector('.hero');
   const lyreRig = document.querySelector('.lyre-rig');
+  const heroPhoto = document.querySelector('.hero-photo');
   let mouseParX = 0, mouseParY = 0, scrollProgress = 0, scrollTicking = false;
 
   function applyHeroTransform(){
@@ -482,6 +511,10 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
     heroContent.style.transform = `translate(${mouseParX}px, ${mouseParY + fadeY}px) scale(${fadeScale})`;
     heroContent.style.opacity = String(Math.max(0, 1 - scrollProgress * 1.3));
     if(lyreRig) lyreRig.style.opacity = String(Math.max(0, 1 - scrollProgress * 1.6));
+    if(heroPhoto){
+      heroPhoto.style.transform = `scale(${1 + scrollProgress * 0.18})`;
+      heroPhoto.style.opacity = String(Math.max(0, 1 - scrollProgress * 1.1));
+    }
   }
 
   if(heroEl && !reduceMotion){
@@ -609,6 +642,93 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
       applyHeroTransform();
     });
   }
+
+  // Boutons magnétiques : attirés légèrement par le curseur à l'approche
+  if(fine){
+    const magnetic = document.querySelectorAll('.btn-primary, .btn-ghost');
+    const radius = 90;
+    magnetic.forEach(btn=>{
+      btn.style.transition = 'transform 0.25s cubic-bezier(.16,1,.3,1)';
+    });
+    window.addEventListener('mousemove', (e)=>{
+      magnetic.forEach(btn=>{
+        const r = btn.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.hypot(dx, dy);
+        if(dist < radius){
+          const pull = (1 - dist / radius) * 0.35;
+          btn.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`;
+        } else {
+          btn.style.transform = '';
+        }
+      });
+    }, { passive: true });
+  }
+})();
+
+// ============================================================
+// STATS COUNTER (compteur animé au scroll)
+// ============================================================
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nums = document.querySelectorAll('.stat-number');
+  if(!nums.length) return;
+  function animateCount(el){
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    if(reduceMotion){ el.textContent = target.toFixed(decimals) + suffix; return; }
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = target * eased;
+      el.textContent = val.toFixed(decimals) + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        animateCount(entry.target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  nums.forEach(n=> statObserver.observe(n));
+})();
+
+// ============================================================
+// GALLERY PARALLAX (effet de profondeur au scroll)
+// ============================================================
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+  const inners = Array.from(document.querySelectorAll('.g-item-inner'));
+  if(!inners.length) return;
+  const speeds = inners.map((_,i)=> [0.12, -0.1, 0.07, -0.06][i % 4]);
+  let ticking = false;
+  function updateParallax(){
+    const vh = window.innerHeight;
+    inners.forEach((inner,i)=>{
+      const r = inner.parentElement.getBoundingClientRect();
+      const centerOffset = (r.top + r.height / 2) - vh / 2;
+      const offset = centerOffset * speeds[i];
+      inner.style.transform = `translateY(${offset}px)`;
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', ()=>{
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateParallax);
+  }, { passive: true });
+  updateParallax();
 })();
 
 // ============================================================
