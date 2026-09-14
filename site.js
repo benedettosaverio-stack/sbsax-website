@@ -36,7 +36,6 @@ root.innerHTML = `
     <div class="lyre lyre-4"><div class="lyre-beam"></div></div>
   </div>
   <div class="hero-grain"></div>
-  <img src="${LOGO_SYMBOL}" alt="" class="hero-bg-symbol">
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-content">
