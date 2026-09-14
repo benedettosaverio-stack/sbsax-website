@@ -400,6 +400,15 @@ section:not(.hero)::before{
   position:relative;
 }
 .event-card:hover{background:rgba(255,255,255,0.045); border-color:rgba(26,232,255,0.22); transform:translateY(-3px);}
+.event-icon{
+  display:flex; align-items:center; justify-content:center;
+  width:52px; height:52px;
+  border-radius:14px;
+  margin-bottom:20px;
+  background:var(--gradient-soft);
+  color:var(--pink);
+}
+.event-icon svg{width:24px; height:24px;}
 .event-num{font-family:'DM Mono',monospace; font-size:12px; color:var(--text-faint); margin-bottom:18px; display:block;}
 .event-card h4{font-family:'Inter',sans-serif; font-weight:700; font-size:17px; text-transform:none; margin-bottom:10px; letter-spacing:0;}
 .event-card p{font-size:14px; color:var(--text-dim); line-height:1.6;}

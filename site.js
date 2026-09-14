@@ -9,6 +9,10 @@ const ICONS = {
   spotify: `<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21a9 9 0 1 0 0 -18a9 9 0 0 0 0 18"/><path d="M8 14.5c2.5 -1 5.5 -1 8 .5"/><path d="M8.5 11.5c2.5 -1 6 -1 8 .5"/><path d="M9 8.5c2 -.5 5.5 -.5 7.5 1"/></svg>`,
   image: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg>`,
   play: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16l13 -8z"/></svg>`,
+  rings: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 15a3 3 0 1 0 0 -6a3 3 0 0 0 0 6"/><path d="M15 15a3 3 0 1 0 0 -6a3 3 0 0 0 0 6"/></svg>`,
+  confetti: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l4.5 -4.5"/><path d="M15 4l1 1"/><path d="M18 8l1 1"/><path d="M11 3v1"/><path d="M20 12h1"/><path d="M6.5 20.5l.5 -3.5l3 -1l7 -7c.5 -.5 .5 -1.5 0 -2l-1.5 -1.5c-.5 -.5 -1.5 -.5 -2 0l-7 7l-1 3l-3 .5z"/></svg>`,
+  club: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3v18"/><path d="M19 3v18"/><path d="M5 8h14"/><path d="M5 8c3 3 3 5 0 8"/><path d="M19 8c-3 3 -3 5 0 8"/></svg>`,
+  briefcase: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>`,
 };
 
 // ============================================================
@@ -96,21 +100,25 @@ root.innerHTML = `
   <div class="wrap">
     <div class="events-grid">
       <div class="event-card reveal">
+        <span class="event-icon">${ICONS.rings}</span>
         <span class="event-num mono">Mariages</span>
         <h4>Cocktails &amp; soirées</h4>
         <p>Saxophone live pour le vin d'honneur, le dîner et la soirée — une présence musicale du début à la fin de votre journée.</p>
       </div>
       <div class="event-card reveal">
+        <span class="event-icon">${ICONS.confetti}</span>
         <span class="event-num mono">Anniversaires</span>
         <h4>Soirées privées</h4>
         <p>Saxophone live en solo, pour une animation qui surprend et marque vos invités à chaque moment de la soirée.</p>
       </div>
       <div class="event-card reveal">
+        <span class="event-icon">${ICONS.club}</span>
         <span class="event-num mono">Bars &amp; clubs</span>
         <h4>Soirées résidentes</h4>
         <p>Un featuring saxophone sur votre DJ déjà présent, ou un set complet selon votre programmation.</p>
       </div>
       <div class="event-card reveal">
+        <span class="event-icon">${ICONS.briefcase}</span>
         <span class="event-num mono">Entreprises</span>
         <h4>Événements corporate</h4>
         <p>Une animation différenciante pour vos soirées, inaugurations et événements de marque.</p>
