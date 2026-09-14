@@ -7,6 +7,7 @@ const ICONS = {
   pin: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg>`,
   insta: `<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0 -6"/><path d="M16.5 7.5l0 .01"/></svg>`,
   spotify: `<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21a9 9 0 1 0 0 -18a9 9 0 0 0 0 18"/><path d="M8 14.5c2.5 -1 5.5 -1 8 .5"/><path d="M8.5 11.5c2.5 -1 6 -1 8 .5"/><path d="M9 8.5c2 -.5 5.5 -.5 7.5 1"/></svg>`,
+  whatsapp: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>`,
   image: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h.01"/><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5"/><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3"/></svg>`,
   play: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4v16l13 -8z"/></svg>`,
   rings: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 15a3 3 0 1 0 0 -6a3 3 0 0 0 0 6"/><path d="M15 15a3 3 0 1 0 0 -6a3 3 0 0 0 0 6"/></svg>`,
@@ -333,6 +334,7 @@ root.innerHTML = `
         <p class="reveal">Chaque devis est personnalisé selon le lieu, la durée et la formule choisie. Décrivez votre événement, je vous réponds en 48 à 72h.</p>
         <div class="contact-detail reveal">
           <div class="contact-detail-row">${ICONS.phone}<a href="tel:+33652282531">06 52 28 25 31</a></div>
+          <div class="contact-detail-row">${ICONS.whatsapp}<a href="https://wa.me/33652282531" target="_blank" rel="noopener">WhatsApp</a></div>
           <div class="contact-detail-row">${ICONS.mail}<a href="mailto:benedetto.saverio@outlook.fr">benedetto.saverio@outlook.fr</a></div>
           <div class="contact-detail-row">${ICONS.pin}<span>Valenciennes &amp; Hauts-de-France</span></div>
         </div>
@@ -372,7 +374,8 @@ root.innerHTML = `
           <label for="f-message">Votre message</label>
           <textarea id="f-message" placeholder="Lieu, nombre d'invités, formule souhaitée (DJ, sax, combiné)..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Envoyer la demande</button>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">${ICONS.whatsapp} Envoyer via WhatsApp</button>
+        <p class="form-fallback" id="form-fallback">Votre messagerie ne s'est pas ouverte ? Contactez-moi directement à <a href="mailto:benedetto.saverio@outlook.fr">benedetto.saverio@outlook.fr</a> ou au <a href="tel:+33652282531">06 52 28 25 31</a>.</p>
       </form>
     </div>
   </div>
@@ -413,7 +416,7 @@ function stars(rating){
 }
 
 // ============================================================
-// CONTACT FORM — mailto fallback
+// CONTACT FORM — envoi via WhatsApp
 // ============================================================
 document.getElementById('contact-form').addEventListener('submit', function(e){
   e.preventDefault();
@@ -423,18 +426,19 @@ document.getElementById('contact-form').addEventListener('submit', function(e){
   const email = document.getElementById('f-email').value.trim();
   const message = document.getElementById('f-message').value.trim();
 
-  const subject = `Demande de devis SBSAX — ${eventType}`;
-  const body = [
-    `Nom : ${name}`,
-    `Email : ${email}`,
+  const lines = [
+    `Bonjour, je m'appelle ${name}.`,
     `Type d'événement : ${eventType}`,
     date ? `Date souhaitée : ${date}` : '',
-    '',
-    message
-  ].filter(Boolean).join('\n');
+    email ? `Email : ${email}` : '',
+    message ? `Message : ${message}` : ''
+  ].filter(Boolean);
 
-  const mailtoUrl = `mailto:benedetto.saverio@outlook.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href = mailtoUrl;
+  const waUrl = `https://wa.me/33652282531?text=${encodeURIComponent(lines.join('\n'))}`;
+  window.open(waUrl, '_blank');
+
+  const fallback = document.getElementById('form-fallback');
+  if(fallback) fallback.classList.add('visible');
 });
 
 // ============================================================
