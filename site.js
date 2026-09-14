@@ -44,7 +44,8 @@ root.innerHTML = `
     <div class="hero-grid">
       <div class="hero-content">
         <div class="hero-eyebrow"><span class="dot"></span> Valenciennes, Hauts-de-France &amp; au-delà</div>
-        <h1>Deux instruments<br><span class="line2">un seul artiste.</span></h1>
+        <h1 class="hero-wordmark">SBSAX</h1>
+        <p class="hero-tagline">DJ house &amp; tech house. Saxophone live. Un seul artiste, toute la soirée.</p>
         <p class="hero-sub">SBSAX, c'est Saverio Benedetto : DJ house &amp; tech house, et saxophoniste live pour vos mariages. Une seule prestation pour faire vibrer un dancefloor et émouvoir un cocktail, dans le Nord, les Hauts-de-France, à Paris et en Belgique.</p>
         <p class="hero-availability">Nombre de prestations limité chaque saison pour garantir une préparation sur-mesure à chaque client.</p>
         <div class="hero-actions">
