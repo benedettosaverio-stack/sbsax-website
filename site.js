@@ -292,13 +292,6 @@ root.innerHTML = `
         </div>
       </details>
       <details class="faq-item">
-        <summary>Pourquoi choisir un artiste qui fait à la fois saxophone et DJ ?</summary>
-        <div class="faq-answer">
-          <p>Plutôt que deux prestataires séparés (DJ + musicien), un seul artiste assure les deux avec une cohérence de style du début à la fin — du vin d'honneur au sax jusqu'au set DJ de la soirée, sans rupture ni changement de prestataire.</p>
-          <p>Ça simplifie aussi l'organisation du jour J : un seul point de contact, un seul emplacement technique, une seule personne qui connaît tout le déroulé.</p>
-        </div>
-      </details>
-      <details class="faq-item">
         <summary>Comment se déroule une prestation pendant le vin d'honneur ?</summary>
         <div class="faq-answer">
           <p>La formule Vin d'Honneur suit trois temps : un accueil énergique dès l'arrivée des invités, un cœur de cocktail avec des classiques fédérateurs (funk/disco plutôt que les tubes eurodance des années 90), puis une montée en énergie électro pour clôturer avant le passage à table.</p>
