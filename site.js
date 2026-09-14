@@ -375,7 +375,7 @@ root.innerHTML = `
           <textarea id="f-message" placeholder="Lieu, nombre d'invités, formule souhaitée (DJ, sax, combiné)..."></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">${ICONS.whatsapp} Envoyer via WhatsApp</button>
-        <p class="form-fallback" id="form-fallback">Votre messagerie ne s'est pas ouverte ? Contactez-moi directement à <a href="mailto:benedetto.saverio@outlook.fr">benedetto.saverio@outlook.fr</a> ou au <a href="tel:+33652282531">06 52 28 25 31</a>.</p>
+        <p class="form-fallback" id="form-fallback">WhatsApp ne s'est pas ouvert ? Contactez-moi directement à <a href="mailto:benedetto.saverio@outlook.fr">benedetto.saverio@outlook.fr</a> ou au <a href="tel:+33652282531">06 52 28 25 31</a>.</p>
       </form>
     </div>
   </div>
