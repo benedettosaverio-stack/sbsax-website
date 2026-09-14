@@ -38,14 +38,19 @@ root.innerHTML = `
   <div class="hero-grain"></div>
   <img src="${LOGO_SYMBOL}" alt="" class="hero-bg-symbol">
   <div class="wrap">
-    <div class="hero-content">
-      <div class="hero-eyebrow"><span class="dot"></span> Valenciennes, Hauts-de-France &amp; au-delà</div>
-      <h1>Deux instruments<br><span class="line2">un seul artiste.</span></h1>
-      <p class="hero-sub">SBSAX, c'est Saverio Benedetto : DJ house &amp; tech house, et saxophoniste live pour vos mariages. Une seule prestation pour faire vibrer un dancefloor et émouvoir un cocktail, dans le Nord, les Hauts-de-France, à Paris et en Belgique.</p>
-      <p class="hero-availability">Nombre de prestations limité chaque saison pour garantir une préparation sur-mesure à chaque client.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Demander un devis</a>
-        <a href="#univers" class="btn btn-ghost">Découvrir l'univers</a>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="dot"></span> Valenciennes, Hauts-de-France &amp; au-delà</div>
+        <h1>Deux instruments<br><span class="line2">un seul artiste.</span></h1>
+        <p class="hero-sub">SBSAX, c'est Saverio Benedetto : DJ house &amp; tech house, et saxophoniste live pour vos mariages. Une seule prestation pour faire vibrer un dancefloor et émouvoir un cocktail, dans le Nord, les Hauts-de-France, à Paris et en Belgique.</p>
+        <p class="hero-availability">Nombre de prestations limité chaque saison pour garantir une préparation sur-mesure à chaque client.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Demander un devis</a>
+          <a href="#univers" class="btn btn-ghost">Découvrir l'univers</a>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <img src="assets/hero_large.jpg" alt="SBSAX, Saverio Benedetto, au saxophone en ambiance club" loading="eager">
       </div>
     </div>
   </div>
@@ -319,9 +324,14 @@ root.innerHTML = `
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; width:100%; flex-wrap:wrap; gap:14px;">
-    <img src="${LOGO_SYMBOL}" alt="SBSAX" class="f-logo">
-    <span class="f-meta">SBSAX · Saverio Benedetto · SIRET 884661125</span>
+  <div class="wrap" style="display:flex; flex-direction:column; gap:10px; width:100%;">
+    <div style="display:flex; align-items:center; justify-content:space-between; width:100%; flex-wrap:wrap; gap:14px;">
+      <img src="${LOGO_SYMBOL}" alt="SBSAX" class="f-logo">
+      <span class="f-meta">SBSAX · Saverio Benedetto · SIRET 884661125</span>
+    </div>
+    <p class="f-meta" style="font-family:'Inter',sans-serif; font-size:13px; line-height:1.6; max-width:720px;">
+      SBSAX — Saxophoniste &amp; DJ pour mariages, soirées privées et événements d'entreprise à Valenciennes, Lille, Douai, Cambrai et dans tout le Nord et les Hauts-de-France. Interventions également possibles sur Paris et en Belgique.
+    </p>
   </div>
 </footer>
 
