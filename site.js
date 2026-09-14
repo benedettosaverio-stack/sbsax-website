@@ -84,11 +84,10 @@ root.innerHTML = `
     <span class="section-eyebrow">L'univers SBSAX</span>
     <h2 class="section-title reveal">Le club et le souffle, sur la même scène.</h2>
     <p class="section-lede reveal">Deux pratiques, une seule signature : une animation qui ne ressemble à aucune autre, pensée pour vos invités autant que pour l'ambiance du lieu.</p>
-  </div>
-  <div class="worlds-grid">
-    <div class="world-card dj reveal">
-      <span class="world-tag">01 — Derrière les platines</span>
-      <h3>DJ House<br>&amp; Tech House</h3>
+    <div class="worlds-grid">
+      <div class="world-card dj reveal">
+        <span class="world-tag">01 — Derrière les platines</span>
+        <h3>DJ House<br>&amp; Tech House</h3>
       <p>Un set qui construit une énergie, du premier verre jusqu'à la piste pleine. House groovy en ouverture, tech house plus engagée à mesure que la soirée monte.</p>
       <ul class="world-list">
         <li>Pioneer XDJ-XZ — matériel professionnel personnel</li>
@@ -105,6 +104,7 @@ root.innerHTML = `
         <li>En featuring sur un DJ déjà présent, ou en solo</li>
         <li>Mariages, cocktails, vins d'honneur, événements pro</li>
       </ul>
+    </div>
     </div>
   </div>
 </section>
