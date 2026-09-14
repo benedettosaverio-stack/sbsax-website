@@ -407,6 +407,26 @@ section{padding:120px 0; position:relative; z-index:1;}
 
 /* ============ GALLERY ============ */
 .gallery{background:var(--bg-raised); padding:120px 0;}
+.gallery-filters{
+  display:flex; gap:12px; flex-wrap:wrap;
+  margin:36px 0 34px;
+}
+.g-filter{
+  font-family:'Inter',sans-serif; font-size:14px; font-weight:600;
+  color:var(--text-dim);
+  background:rgba(255,255,255,0.03);
+  border:1.5px solid var(--surface-border);
+  border-radius:30px;
+  padding:9px 20px;
+  cursor:pointer;
+  transition:border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.g-filter:hover{border-color:rgba(26,232,255,0.35); transform:translateY(-1px);}
+.g-filter.active{
+  color:var(--text);
+  border-color:transparent;
+  background:var(--gradient);
+}
 .gallery-grid{
   columns:3;
   column-gap:14px;

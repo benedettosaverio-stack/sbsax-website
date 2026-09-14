@@ -124,29 +124,34 @@ root.innerHTML = `
     <span class="section-eyebrow">En images</span>
     <h2 class="section-title reveal">L'énergie SBSAX, en direct des prestations.</h2>
     <p class="section-lede reveal">Quelques moments captés sur scène, en club, en mariage et en événement pro. Suivez les coulisses au quotidien sur Instagram.</p>
+    <div class="gallery-filters reveal">
+      <button class="g-filter active" data-filter="all">Tout voir</button>
+      <button class="g-filter" data-filter="mariage">Mariage</button>
+      <button class="g-filter" data-filter="club">Club &amp; soirée</button>
+    </div>
     <div class="gallery-grid">
-      <div class="g-item reveal"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div>
-      <div class="g-item video-slot reveal">
+      <div class="g-item reveal" data-cat="club"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div>
+      <div class="g-item video-slot reveal" data-cat="mariage">
         <video controls preload="metadata" poster="assets/poster-ambiance.jpg" playsinline>
           <source src="assets/video-ambiance.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="g-item reveal"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div>
-      <div class="g-item reveal"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div>
-      <div class="g-item video-slot reveal">
+      <div class="g-item reveal" data-cat="club"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div>
+      <div class="g-item reveal" data-cat="club"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div>
+      <div class="g-item video-slot reveal" data-cat="mariage">
         <video controls preload="metadata" poster="assets/poster-etincelles.jpg" playsinline>
           <source src="assets/video-etincelles.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="g-item reveal"><img src="assets/mariage_small.jpg" alt="Saxophoniste pour mariage SBSAX en prestation" loading="lazy"></div>
-      <div class="g-item reveal"><img src="assets/dj_medium.jpg" alt="DJ mariage SBSAX aux platines en soirée" loading="lazy"></div>
-      <div class="g-item video-slot reveal">
+      <div class="g-item reveal" data-cat="mariage"><img src="assets/mariage_small.jpg" alt="Saxophoniste pour mariage SBSAX en prestation" loading="lazy"></div>
+      <div class="g-item reveal" data-cat="club"><img src="assets/dj_medium.jpg" alt="DJ mariage SBSAX aux platines en soirée" loading="lazy"></div>
+      <div class="g-item video-slot reveal" data-cat="mariage">
         <video controls preload="metadata" poster="assets/poster-dancefloor.jpg" playsinline>
           <source src="assets/video-dancefloor.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="g-item reveal"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
-      <div class="g-item video-slot reveal">
+      <div class="g-item reveal" data-cat="mariage"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div>
+      <div class="g-item video-slot reveal" data-cat="mariage">
         <video controls preload="metadata" poster="assets/poster-mariage.jpg" playsinline>
           <source src="assets/video-mariage.mp4" type="video/mp4">
         </video>
@@ -572,4 +577,23 @@ document.querySelectorAll('.g-item').forEach((el,i)=>{ el.style.transitionDelay 
       applyHeroTransform();
     });
   }
+})();
+
+// ============================================================
+// GALLERY FILTERS
+// ============================================================
+(function(){
+  const filterBtns = document.querySelectorAll('.g-filter');
+  const items = document.querySelectorAll('.g-item');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      items.forEach(item => {
+        const show = filter === 'all' || item.dataset.cat === filter;
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
 })();
