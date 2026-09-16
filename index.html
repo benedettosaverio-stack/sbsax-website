@@ -7,9 +7,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SBSAX — Saxophoniste & DJ Mariage Nord, Hauts-de-France, Paris</title>
-<meta name="description" content="SBSAX (Saverio Benedetto) : saxophoniste et DJ professionnel pour mariages, soirées privées et événements d'entreprise. Basé à Valenciennes, intervient dans le Nord, les Hauts-de-France, à Paris et en Belgique. Devis personnalisé sous 48-72h.">
-<meta name="keywords" content="saxophoniste mariage, DJ mariage, saxophoniste Nord, DJ Hauts-de-France, saxophoniste Paris, animation mariage, DJ saxophoniste, musicien mariage Valenciennes, DJ Lille, saxophoniste Lille">
+<title>SBSAX — Saxophoniste & DJ Mariage | Nord, Hauts-de-France</title>
+<meta name="description" content="Saxophoniste et DJ professionnel pour mariages et soirées dans le Nord, les Hauts-de-France (Lille, Douai, Valenciennes...), Paris et Belgique. Devis sous 48-72h.">
+<meta name="keywords" content="saxophoniste mariage Nord, DJ mariage Nord, saxophoniste Hauts-de-France, DJ Hauts-de-France, saxophoniste Lille, saxophoniste Valenciennes, saxophoniste Douai, saxophoniste Cambrai, DJ Lille, DJ saxophoniste mariage, animation mariage Nord, musicien mariage Valenciennes">
 <link rel="canonical" href="https://sb-sax.com/">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Saverio Benedetto">
@@ -21,9 +21,9 @@
 <meta property="og:url" content="https://sb-sax.com/">
 <meta property="og:title" content="SBSAX — Saxophoniste & DJ pour Mariages | Nord, Hauts-de-France, Paris">
 <meta property="og:description" content="DJ et saxophoniste live pour vos mariages et événements. Deux instruments, un seul artiste. Disponibilités limitées chaque saison — demandez votre devis.">
-<meta property="og:image" content="https://sb-sax.com/assets/hero_large.jpg">
-<meta property="og:image:width" content="792">
-<meta property="og:image:height" content="990">
+<meta property="og:image" content="https://sb-sax.com/assets/dj_medium.jpg">
+<meta property="og:image:width" content="1086">
+<meta property="og:image:height" content="725">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="SBSAX">
 
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SBSAX — Saxophoniste & DJ pour Mariages">
 <meta name="twitter:description" content="DJ et saxophoniste live pour vos mariages et événements dans le Nord, les Hauts-de-France et Paris.">
-<meta name="twitter:image" content="https://sb-sax.com/assets/hero_large.jpg">
+<meta name="twitter:image" content="https://sb-sax.com/assets/dj_medium.jpg">
 <meta name="theme-color" content="#0a0a0a">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -322,7 +322,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   animation:dotPulse 1.8s ease-in-out infinite;
 }
 @keyframes dotPulse{0%,100%{box-shadow:0 0 6px rgba(255,31,122,0.4);} 50%{box-shadow:0 0 14px rgba(26,232,255,0.65);}}
+.hero-h1{display:block; font-weight:inherit;}
 .hero-wordmark{
+  display:block;
   font-size:clamp(64px, 13vw, 160px);
   line-height:0.88;
   margin-bottom:6px;
@@ -332,7 +334,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   filter:drop-shadow(0 0 40px rgba(255,31,122,0.28));
 }
 .hero-tagline{
+  display:block;
   font-family:'Inter',sans-serif; font-weight:600; font-size:17px;
+  text-transform:none;
   color:var(--text); opacity:0.92;
   margin-bottom:30px;
   letter-spacing:0.01em;
@@ -890,9 +894,8 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
 }
 .hero-content.hero-in > *:nth-child(1){transition-delay:0.1s;}
 .hero-content.hero-in > *:nth-child(2){transition-delay:0.22s;}
-.hero-content.hero-in > *:nth-child(3){transition-delay:0.34s;}
-.hero-content.hero-in > *:nth-child(4){transition-delay:0.46s;}
-.hero-content.hero-in > *:nth-child(5){transition-delay:0.58s;}
+.hero-content.hero-in > *:nth-child(3){transition-delay:0.46s;}
+.hero-content.hero-in > *:nth-child(4){transition-delay:0.58s;}
 .hero-content.hero-in > *{opacity:1; transform:translateY(0);}
 
 @media (prefers-reduced-motion: reduce){
@@ -1122,13 +1125,22 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MusicGroup",
+  "@type": ["MusicGroup", "LocalBusiness"],
   "name": "SBSAX",
   "alternateName": "Saverio Benedetto",
   "url": "https://sb-sax.com/",
   "image": "https://sb-sax.com/assets/hero_large.jpg",
   "description": "Saxophoniste et DJ professionnel pour mariages, soirées privées et événements d'entreprise dans le Nord, les Hauts-de-France, à Paris et en Belgique.",
   "genre": ["House", "Tech House", "Saxophone live"],
+  "priceRange": "€€",
+  "telephone": "+33652282531",
+  "email": "benedetto.saverio@outlook.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Valenciennes",
+    "addressRegion": "Hauts-de-France",
+    "addressCountry": "FR"
+  },
   "foundingLocation": {
     "@type": "Place",
     "name": "Valenciennes, Hauts-de-France, France"
@@ -1224,26 +1236,6 @@ footer .f-meta{font-family:'DM Mono',monospace; font-size:12px; color:var(--text
       }
     }
   ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "SBSAX - Saverio Benedetto",
-  "image": "https://sb-sax.com/assets/hero_large.jpg",
-  "priceRange": "€€",
-  "telephone": "+33652282531",
-  "email": "benedetto.saverio@outlook.fr",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Valenciennes",
-    "addressRegion": "Hauts-de-France",
-    "addressCountry": "FR"
-  },
-  "url": "https://sb-sax.com/",
-  "areaServed": "Nord, Hauts-de-France, Paris, Belgique"
 }
 </script>
 
