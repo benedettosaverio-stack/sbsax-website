@@ -60,8 +60,7 @@ root.innerHTML = `
     <div class="hero-grid">
       <div class="hero-content">
         <div class="hero-eyebrow"><span class="dot"></span> Valenciennes, Hauts-de-France &amp; au-delà</div>
-        <h1 class="hero-wordmark">SBSAX</h1>
-        <p class="hero-tagline">DJ house &amp; tech house. Saxophone live.</p>
+        <h1 class="hero-h1"><span class="hero-wordmark">SBSAX</span><span class="hero-tagline">Saxophoniste &amp; DJ pour mariages dans le Nord — house, tech house &amp; saxophone live.</span></h1>
         <p class="hero-availability">Nombre de prestations limité chaque saison pour garantir une préparation sur-mesure à chaque client.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Demander un devis</a>
@@ -69,7 +68,7 @@ root.innerHTML = `
         </div>
       </div>
       <div class="hero-photo reveal">
-        <img src="assets/hero_large.jpg" alt="SBSAX, Saverio Benedetto, au saxophone en ambiance club" loading="eager">
+        <img src="assets/hero_large.jpg" alt="SBSAX, Saverio Benedetto, au saxophone en ambiance club" width="792" height="990" loading="eager" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -173,27 +172,27 @@ root.innerHTML = `
       <button class="g-filter" data-filter="club">Club &amp; soirée</button>
     </div>
     <div class="gallery-grid">
-      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/hero_large.jpg" alt="SBSAX au saxophone en ambiance club" width="792" height="990" loading="lazy"></div></div>
       <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-ambiance.jpg" playsinline>
           <source src="assets/video-ambiance.mp4" type="video/mp4">
         </video>
       </div></div>
-      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" loading="lazy"></div></div>
-      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/foule_medium.jpg" alt="SBSAX au saxophone parmi le public" width="1086" height="724" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/bleu_small.jpg" alt="SBSAX au saxophone sur scène" width="1102" height="712" loading="lazy"></div></div>
       <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-etincelles.jpg" playsinline>
           <source src="assets/video-etincelles.mp4" type="video/mp4">
         </video>
       </div></div>
-      <div class="g-item reveal" data-cat="mariage"><div class="g-item-inner"><img src="assets/mariage_small.jpg" alt="Saxophoniste pour mariage SBSAX en prestation" loading="lazy"></div></div>
-      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/dj_medium.jpg" alt="DJ mariage SBSAX aux platines en soirée" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="mariage"><div class="g-item-inner"><img src="assets/mariage_small.jpg" alt="Saxophoniste pour mariage SBSAX en prestation" width="792" height="990" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="club"><div class="g-item-inner"><img src="assets/dj_medium.jpg" alt="DJ mariage SBSAX aux platines en soirée" width="1086" height="725" loading="lazy"></div></div>
       <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-dancefloor.jpg" playsinline>
           <source src="assets/video-dancefloor.mp4" type="video/mp4">
         </video>
       </div></div>
-      <div class="g-item reveal" data-cat="mariage"><div class="g-item-inner"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" loading="lazy"></div></div>
+      <div class="g-item reveal" data-cat="mariage"><div class="g-item-inner"><img src="assets/exterieur_small.jpg" alt="SBSAX au saxophone en extérieur" width="1086" height="724" loading="lazy"></div></div>
       <div class="g-item video-slot reveal" data-cat="mariage"><div class="g-item-inner">
         <video controls preload="metadata" poster="assets/poster-mariage.jpg" playsinline>
           <source src="assets/video-mariage.mp4" type="video/mp4">
@@ -293,7 +292,7 @@ root.innerHTML = `
         <div class="insta-native-card">
           <div class="insta-native-header">
             <div class="insta-avatar-ring">
-              <div class="insta-avatar"><img src="assets/avatar-saverio.jpg" alt="Saverio Benedetto SBSAX"></div>
+              <div class="insta-avatar"><img src="assets/avatar-saverio.jpg" alt="Saverio Benedetto SBSAX" width="200" height="200" loading="lazy"></div>
             </div>
             <div class="insta-native-info">
               <h4>sbsax__</h4>
