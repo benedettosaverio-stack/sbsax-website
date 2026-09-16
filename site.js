@@ -22,7 +22,7 @@ const ICONS = {
 const root = document.getElementById('root');
 
 root.innerHTML = `
-<nav class="nav">
+<nav class="nav" id="main-nav">
   <img src="${LOGO_SYMBOL}" alt="SBSAX" class="nav-logo">
   <div class="nav-links">
     <a href="#univers">Univers</a>
@@ -31,7 +31,22 @@ root.innerHTML = `
     <a href="#equipement">Équipement</a>
     <a href="#contact" class="nav-cta">Demander un devis</a>
   </div>
+  <button type="button" class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#univers">Univers</a>
+  <a href="#evenements">Événements</a>
+  <a href="#galerie">Galerie</a>
+  <a href="#equipement">Équipement</a>
+  <a href="#contact" class="nav-cta">Demander un devis</a>
+</div>
+<div class="mobile-quickbar">
+  <a href="tel:+33652282531" class="qb-btn">${ICONS.phone}<span>Appeler</span></a>
+  <a href="https://wa.me/33652282531" target="_blank" rel="noopener" class="qb-btn">${ICONS.whatsapp}<span>WhatsApp</span></a>
+  <a href="#contact" class="qb-btn qb-primary">${ICONS.mail}<span>Devis</span></a>
+</div>
 
 <section class="hero">
   <div class="lyre-rig">
@@ -399,6 +414,38 @@ root.innerHTML = `
 </div>
 `;
 
+// ============================================================
+// MOBILE MENU
+// ============================================================
+(function(){
+  const nav = document.getElementById('main-nav');
+  const toggle = document.getElementById('nav-mobile-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if(!nav || !toggle || !menu) return;
+
+  function closeMenu(){
+    nav.classList.remove('menu-open');
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  function openMenu(){
+    nav.classList.add('menu-open');
+    menu.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  toggle.addEventListener('click', function(){
+    if(menu.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  menu.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeMenu(); });
+  document.addEventListener('click', e=>{
+    if(menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)){
+      closeMenu();
+    }
+  });
+})();
+
 function placeholder(label, icon){
   return `<div class="g-placeholder">${icon}<span>${label}</span></div>`;
 }
@@ -453,15 +500,27 @@ document.querySelectorAll('h2.section-title.reveal').forEach(title=>{
 });
 
 const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('in');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-revealEls.forEach(el=>observer.observe(el));
+if(typeof IntersectionObserver === 'undefined'){
+  // Pas de support : on affiche tout directement plutôt que de rester invisible.
+  revealEls.forEach(el=>el.classList.add('in'));
+} else {
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el=>observer.observe(el));
+
+  // Filet de sécurité : si un élément n'a jamais été révélé (observer
+  // manqué, onglet en arrière-plan, device lent), on force l'affichage
+  // après un délai plutôt que de laisser du contenu bloqué invisible.
+  setTimeout(()=>{
+    document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in'));
+  }, 4000);
+}
 
 // Stagger world cards and event cards slightly
 document.querySelectorAll('.world-card').forEach((el,i)=>{ el.style.transitionDelay = `${i*0.1}s`; });
